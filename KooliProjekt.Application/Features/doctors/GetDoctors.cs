@@ -1,7 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using System.Collections.Generic;
 
-public class GetDoctors : IRequest<List<Doctor>>
+namespace KooliProjekt.Application.Features.Doctors
 {
+    public class GetDoctors : IRequest<OperationResult<PagedResult<Doctor>>>
+    {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+    }
 }

@@ -1,21 +1,32 @@
-﻿using KooliProjekt.Application.Data;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
-public class GetDoctorsHandler : IRequestHandler<GetDoctors, List<Doctor>>
+namespace KooliProjekt.Application.Features.Doctors
 {
-    private readonly ApplicationDbContext _db;
-
-    public GetDoctorsHandler(ApplicationDbContext db)
+    public class GetDoctorsHandler : IRequestHandler<GetDoctors, OperationResult<PagedResult<Doctor>>>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<List<User>> Handle(GetUsers request, CancellationToken token)
-    {
-        return await _db.Users.ToListAsync(token);
+        public GetDoctorsHandler(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<OperationResult<PagedResult<Doctor>>> Handle(GetDoctors request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<PagedResult<Doctor>>();
+
+            result.Value = await _dbContext
+                .Doctors
+                .OrderBy(x => x.LastName)
+                .GetPagedAsync(request.Page, request.PageSize);
+
+            return result;
+        }
     }
 }

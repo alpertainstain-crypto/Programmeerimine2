@@ -1,8 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using System.Collections.Generic;
 
-public class GetAppointments : IRequest<List<Appointment>>
+namespace KooliProjekt.Application.Features.Appointments
 {
+    public class GetAppointments : IRequest<OperationResult<PagedResult<Appointment>>>
+    {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+    }
 }
-

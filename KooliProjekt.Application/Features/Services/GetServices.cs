@@ -1,7 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using System.Collections.Generic;
 
-public class GetServices : IRequest<List<Service>>
+namespace KooliProjekt.Application.Features.Services
 {
+    public class GetServices : IRequest<OperationResult<PagedResult<Service>>>
+    {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+    }
 }

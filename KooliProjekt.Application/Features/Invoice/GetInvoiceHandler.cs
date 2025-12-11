@@ -1,21 +1,31 @@
-﻿using KooliProjekt.Application.Data;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
 
-public class GetInvoiceHandler : IRequestHandler<GetInvoice, List<Invoice>>
+namespace KooliProjekt.Application.Features.Invoice
 {
-    private readonly ApplicationDbContext _db;
-
-    public GetInvoiceHandler(ApplicationDbContext db)
+    public class GetInvoiceHandler : IRequestHandler<GetInvoice, OperationResult<PagedResult<Invoice>>>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<List<Invoice>> Handle(GetInvoice request, CancellationToken token)
-    {
-        return await _db.Invoice.ToListAsync(token);
+        public GetInvoiceHandler(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<OperationResult<PagedResult<Invoice>>> Handle(GetInvoice request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<PagedResult<Invoice>>();
+
+            result.Value = await _dbContext
+                .Invoice
+                .OrderBy(x => x.Id)
+                .GetPagedAsync(request.Page, request.PageSize);
+
+            return result;
+        }
     }
 }

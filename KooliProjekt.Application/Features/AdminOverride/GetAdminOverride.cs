@@ -1,8 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using System.Collections.Generic;
 
-public class GetAdminOverrride : IRequest<List<AdminOverride>>
+namespace KooliProjekt.Application.Features.AdminOverride
 {
+    public class GetAdminOverride : IRequest<OperationResult<PagedResult<AdminOverride>>>
+    {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+    }
 }
-

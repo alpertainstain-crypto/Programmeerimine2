@@ -1,7 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using System.Collections.Generic;
 
-public class GetUsers : IRequest<List<User>>
+namespace KooliProjekt.Application.Features.User
 {
+    public class GetUser : IRequest<OperationResult<PagedResult<User>>>
+    {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+    }
 }

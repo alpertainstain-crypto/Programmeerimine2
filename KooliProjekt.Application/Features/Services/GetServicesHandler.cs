@@ -1,21 +1,31 @@
-﻿using KooliProjekt.Application.Data;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
 
-public class GetServicesHandler : IRequestHandler<GetServices, List<Service>>
+namespace KooliProjekt.Application.Features.Services
 {
-    private readonly ApplicationDbContext _db;
-
-    public GetServicesHandler(ApplicationDbContext db)
+    public class GetServicesHandler : IRequestHandler<GetServices, OperationResult<PagedResult<Service>>>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<List<Service>> Handle(GetServices request, CancellationToken token)
-    {
-        return await _db.Services.ToListAsync(token);
+        public GetServicesHandler(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<OperationResult<PagedResult<Service>>> Handle(GetServices request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<PagedResult<Service>>();
+
+            result.Value = await _dbContext
+                .Services
+                .OrderBy(x => x.Name)
+                .GetPagedAsync(request.Page, request.PageSize);
+
+            return result;
+        }
     }
 }

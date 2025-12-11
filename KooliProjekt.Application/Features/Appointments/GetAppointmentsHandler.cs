@@ -1,21 +1,32 @@
-﻿using KooliProjekt.Application.Data;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
-public class GetAppointmentsHandler : IRequestHandler<GetAppointments, List<Appointment>>
+namespace KooliProjekt.Application.Features.Appointments
 {
-    private readonly ApplicationDbContext _db;
-
-    public GetAppointmentsHandler(ApplicationDbContext db)
+    public class GetAppointmentsHandler : IRequestHandler<GetAppointments, OperationResult<PagedResult<Appointment>>>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<List<Appointment>> Handle(GetAppointments request, CancellationToken token)
-    {
-        return await _db.Appointment.ToListAsync(token);
+        public GetAppointmentsHandler(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<OperationResult<PagedResult<Appointment>>> Handle(GetAppointments request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<PagedResult<Appointment>>();
+
+            result.Value = await _dbContext
+                .Appointments
+                .OrderBy(x => x.Id)
+                .GetPagedAsync(request.Page, request.PageSize);
+
+            return result;
+        }
     }
 }

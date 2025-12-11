@@ -1,21 +1,32 @@
-﻿using KooliProjekt.Application.Data;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
-public class GetAvailabilityHandler : IRequestHandler<GetAvailability, List<Availability>>
+namespace KooliProjekt.Application.Features.Availability
 {
-    private readonly ApplicationDbContext _db;
-
-    public GetAvailabilityHandler(ApplicationDbContext db)
+    public class GetAvailabilityHandler : IRequestHandler<GetAvailability, OperationResult<PagedResult<Availability>>>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<List<Availability>> Handle(GetAvailability request, CancellationToken token)
-    {
-        return await _db.Availability.ToListAsync(token);
+        public GetAvailabilityHandler(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<OperationResult<PagedResult<Availability>>> Handle(GetAvailability request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<PagedResult<Availability>>();
+
+            result.Value = await _dbContext
+                .Availability
+                .OrderBy(x => x.Id)
+                .GetPagedAsync(request.Page, request.PageSize);
+
+            return result;
+        }
     }
 }

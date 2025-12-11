@@ -1,21 +1,31 @@
-﻿using KooliProjekt.Application.Data;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
 
-public class GetUsersHandler : IRequestHandler<GetUsers, List<User>>
+namespace KooliProjekt.Application.Features.User
 {
-    private readonly ApplicationDbContext _db;
-
-    public GetUsersHandler(ApplicationDbContext db)
+    public class GetUsersHandler : IRequestHandler<GetUser, OperationResult<PagedResult<User>>>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _dbContext;
 
-    public async Task<List<User>> Handle(GetUsers request, CancellationToken token)
-    {
-        return await _db.Users.ToListAsync(token);
+        public GetUsersHandler(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<OperationResult<PagedResult<User>>> Handle(GetUsers request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<PagedResult<User>>();
+
+            result.Value = await _dbContext
+                .User
+                .OrderBy(x => x.Name)
+                .GetPagedAsync(request.Page, request.PageSize);
+
+            return result;
+        }
     }
 }

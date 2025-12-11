@@ -1,7 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using System.Collections.Generic;
 
-public class GetInvoiceLines : IRequest<List<InvoiceLine>>
+namespace KooliProjekt.Application.Features.InvoiceLines
 {
+    public class GetInvoiceLines : IRequest<OperationResult<PagedResult<InvoiceLine>>>
+    {
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+    }
 }
