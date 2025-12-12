@@ -16,13 +16,13 @@ namespace KooliProjekt.Application.Data
 //        public DbSet<ToDoList> ToDoLists { get; set; }
 //        public DbSet<ToDoItem> ToDoItems { get; set; }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Doctor> doctors { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Doctor> Doctor { get; set; }
         public DbSet<Availability> Availability { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
         public DbSet<Invoice> Invoice { get; set; }
         public DbSet<InvoiceLine> InvoiceLine { get; set; }
-        public DbSet<Service> Services { get; set; }
+        public DbSet<Service> Service { get; set; }
         public DbSet<AdminOverride> AdminOverride { get; set; }
         public DbSet<VisitDocument> VisitDocument { get; set; }
     }
