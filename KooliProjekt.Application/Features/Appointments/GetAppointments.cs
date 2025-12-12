@@ -3,7 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Appointments
+namespace KooliProjekt.Application.Features
 {
     public class GetAppointments : IRequest<OperationResult<PagedResult<Appointment>>>
     {

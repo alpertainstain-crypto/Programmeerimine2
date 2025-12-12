@@ -1,11 +1,12 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.InvoiceLines
+namespace KooliProjekt.Application.Features
 {
     public class GetInvoiceLinesHandler : IRequestHandler<GetInvoiceLines, OperationResult<PagedResult<InvoiceLine>>>
     {

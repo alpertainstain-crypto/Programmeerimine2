@@ -5,7 +5,7 @@ using MediatR;
 
 namespace KooliProjekt.Application.Features.VisiteDocument
 {
-    public class GetVisiteDocument : IRequest<OperationResult<PagedResult<VisiteDocument>>>
+    public class GetVisitDocument : IRequest<OperationResult<PagedResult<VisitDocument>>>
     {
         public int Page { get; set; }
         public int PageSize { get; set; }

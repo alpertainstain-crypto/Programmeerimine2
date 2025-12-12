@@ -3,7 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.AdminOverride
+namespace KooliProjekt.Application.Features
 {
     public class GetAdminOverride : IRequest<OperationResult<PagedResult<AdminOverride>>>
     {

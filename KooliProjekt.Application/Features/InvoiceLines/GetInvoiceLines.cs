@@ -3,7 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.InvoiceLines
+namespace KooliProjekt.Application.Features
 {
     public class GetInvoiceLines : IRequest<OperationResult<PagedResult<InvoiceLine>>>
     {

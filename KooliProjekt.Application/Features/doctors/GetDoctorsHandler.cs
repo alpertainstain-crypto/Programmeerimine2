@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Paging;
@@ -6,7 +7,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Doctors
+namespace KooliProjekt.Application.Features
 {
     public class GetDoctorsHandler : IRequestHandler<GetDoctors, OperationResult<PagedResult<Doctor>>>
     {
@@ -23,7 +24,7 @@ namespace KooliProjekt.Application.Features.Doctors
 
             result.Value = await _dbContext
                 .Doctors
-                .OrderBy(x => x.LastName)
+                .OrderBy(x => x.Name)
                 .GetPagedAsync(request.Page, request.PageSize);
 
             return result;

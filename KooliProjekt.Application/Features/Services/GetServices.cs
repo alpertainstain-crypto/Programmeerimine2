@@ -3,7 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Services
+namespace KooliProjekt.Application.Features
 {
     public class GetServices : IRequest<OperationResult<PagedResult<Service>>>
     {

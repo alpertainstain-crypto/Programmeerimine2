@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Paging;
@@ -6,7 +7,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.AdminOverride
+namespace KooliProjekt.Application.Features
 {
     public class GetAdminOverrideHandler : IRequestHandler<GetAdminOverride, OperationResult<PagedResult<AdminOverride>>>
     {
