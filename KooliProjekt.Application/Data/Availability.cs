@@ -15,5 +15,7 @@ public class Availability
 
     public bool IsException { get; set; }
     [Required]
+    [MaxLength(225)]
+    [MinLength(1)]
     public Doctor Doctor { get; set; } = default!;
 }

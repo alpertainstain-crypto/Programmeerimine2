@@ -6,8 +6,10 @@ public class User
     [Required]
     public string Name { get; set; } = default!;
     [Required]
+    [EmailAddress]
     public string Email { get; set; } = default!;
     [Required]
+    [Phone]
     public string Phone { get; set; } = default!;
     public string PasswordHash { get; set; } = default!;
     [Required]
