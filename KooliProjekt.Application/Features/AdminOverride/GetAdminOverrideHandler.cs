@@ -7,7 +7,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features
+namespace KooliProjekt.Application.Features.AdminOverride
 {
     public class GetAdminOverrideHandler : IRequestHandler<GetAdminOverride, OperationResult<PagedResult<AdminOverride>>>
     {
