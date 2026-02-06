@@ -1,4 +1,6 @@
-System.CoponentModel.DataAnnotations;
+
+
+using System.ComponentModel.DataAnnotations;
 
 public class AdminOverride
 {

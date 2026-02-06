@@ -1,4 +1,5 @@
-System.ComponentModel.DataAnnotations;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 public class Availability
 {
@@ -11,7 +12,7 @@ public class Availability
     [Required]
     public TimeSpan EndTime { get; set; }
     [Required]
-    public Date Date { get; set; }
+    public DateTime Date { get; set; }
 
     public bool IsException { get; set; }
     [Required]
