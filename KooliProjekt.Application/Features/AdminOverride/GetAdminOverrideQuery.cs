@@ -6,5 +6,7 @@ namespace KooliProjekt.Application.Features.AdminOverride
     public class GetAdminOverride : IRequest<OperationResult<object>>
     {
         public int Id { get; set; }
+        public int Page { get; internal set; }
+        public int PageSize { get; internal set; }
     }
 }
