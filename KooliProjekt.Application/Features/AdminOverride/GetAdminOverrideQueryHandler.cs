@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features.ToDoLists
 {
-    public class GetToDoListQueryHandler : IRequestHandler<GetToDoListQuery, OperationResult<object>>
+    public class GetToDoListQueryHandler : IRequestHandler<GetAdminOverride, OperationResult<object>>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -18,12 +18,12 @@ namespace KooliProjekt.Application.Features.ToDoLists
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<object>> Handle(GetToDoListQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<object>> Handle(GetAdminOverride request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<object>();
 
             result.Value = await _dbContext
-                .ToDoLists
+                .AdminOverride
                 .Include(list => list.Items)
                 .Where(list => list.Id == request.Id)
                 .Select(list => new
