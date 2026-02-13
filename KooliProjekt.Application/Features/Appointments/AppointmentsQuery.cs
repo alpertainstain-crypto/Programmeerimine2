@@ -5,7 +5,7 @@ using MediatR;
 
 namespace KooliProjekt.Application.Features
 {
-    public class GetAppointments : IRequest<OperationResult<PagedResult<Appointment>>>
+    public class AppointmentsQuery : IRequest<OperationResult<PagedResult<Appointment>>>
     {
         public int Page { get; set; }
         public int PageSize { get; set; }

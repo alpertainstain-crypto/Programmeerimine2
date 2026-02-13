@@ -17,7 +17,7 @@ namespace KooliProjekt.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var query = new GetAppointments();
+            var query = new AppointmentsQuery();
             var result = await _mediator.Send(query);
 
             return Result(result);

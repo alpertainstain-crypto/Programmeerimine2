@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features
 {
-    public class GetAppointmentsHandler : IRequestHandler<GetAppointments, OperationResult<PagedResult<Appointment>>>
+    public class GetAppointmentsHandler : IRequestHandler<AppointmentsQuery, OperationResult<PagedResult<Appointment>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -18,7 +18,7 @@ namespace KooliProjekt.Application.Features
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<Appointment>>> Handle(GetAppointments request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<Appointment>>> Handle(AppointmentsQuery request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<PagedResult<Appointment>>();
 

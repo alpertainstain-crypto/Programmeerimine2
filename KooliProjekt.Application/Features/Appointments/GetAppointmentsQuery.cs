@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
 
 namespace KooliProjekt.Application.Features.Appointments
 {
-    internal class GetAppointmentsQuery
+    public class GetAppointments : IRequest<OperationResult<object>>
     {
+        public int Id { get; set; }
+        public int Page { get; internal set; }
+        public int PageSize { get; internal set; }
     }
 }

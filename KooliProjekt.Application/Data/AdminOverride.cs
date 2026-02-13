@@ -23,4 +23,6 @@ public class AdminOverride
     [MaxLength(60)]
     [MinLength(1)]
     public Doctor Doctor { get; set; } = default!;
+    public object Items { get; internal set; }
+    public object Title { get; internal set; }
 }
