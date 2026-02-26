@@ -1,7 +1,7 @@
 ﻿using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.AdminOverride
+namespace KooliProjekt.Application.Features.AdminOverrideList
 {
     public class GetAdminOverride : IRequest<OperationResult<object>>
     {

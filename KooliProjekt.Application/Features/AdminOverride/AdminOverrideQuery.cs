@@ -5,7 +5,7 @@ using MediatR;
 
 namespace KooliProjekt.Application.Features
 {
-    public class AdminOverrideQuery : IRequest<OperationResult<PagedResult<AdminOverride>>>
+    public class AdminOverrideQuery : IRequest<OperationResult<PagedResult<AdminOverrideQuery>>>
     {
         public int Page { get; set; }
         public int PageSize { get; set; }

@@ -17,7 +17,8 @@ namespace KooliProjekt.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var query = new Application.Features.AdminOverride();
+
+            var query = new AdminOverrideQuery();
             var result = await _mediator.Send(query);
 
             return Result(result);

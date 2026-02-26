@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KooliProjekt.Application.Infrastructure.Paging
 {
@@ -9,6 +10,11 @@ namespace KooliProjekt.Application.Infrastructure.Paging
         public PagedResult()
         {
             Results = new List<T>();
+        }
+
+        public static implicit operator PagedResult<T>(PagedResult<AdminOverride> v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

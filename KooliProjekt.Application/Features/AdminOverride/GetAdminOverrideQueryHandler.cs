@@ -1,5 +1,5 @@
 using System;
-using System.linq;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
@@ -7,9 +7,9 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.AdminOverride
+namespace KooliProjekt.Application.Features.AdminOverrideList
 {
-    public class GetAdminOverrideQueryHandler : IRequestHandler<AdminOverrideQuery, OperationResult<object>>
+    public class GetAdminOverrideQueryHandler : IRequestHandler<GetAdminOverride, OperationResult<object>>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -18,25 +18,22 @@ namespace KooliProjekt.Application.Features.AdminOverride
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<object>> Handle(GetAdminOverrideQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<object>> Handle(GetAdminOverride request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<object>();
 
             result.Value = await _dbContext
-                .AdminOverrides
-                .Include(list => list.Items)
+                .AdminOverride
+                .Include(list => list.Doctor)
                 .Where(list => list.Id == request.Id)
                 .Select(list => new
                 {
                     Id = list.Id,
-                    Title = list.Title,
-                    Items = list.Items.Select(item => new
-                    {
-                        item.Id,
-                        item.Title
-                    })
+                    Reason = list.Reason,
+                    Start = list.Start,
+                    End = list.End
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
 
             return result;
         }

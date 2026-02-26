@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Features.AdminOverrideList;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace KooliProjekt.Application.Features.AdminOverride
+namespace KooliProjekt.Application.Features
 {
 	public class SaveAdminOverrideCommandHandler : IRequestHandler<SaveAdminOverrideCommand, OperationResult>
 	{
