@@ -25,7 +25,10 @@ namespace KooliProjekt.Application.Features
             result.Value = await _dbContext
                 .Availability
                 .OrderBy(x => x.Id)
-                .GetPagedAsync(request.Page, request.PageSize);
+                .GetPagedAsync(
+                    ((KooliProjekt.Application.Features.GetAvailability)request).Page,
+                    ((KooliProjekt.Application.Features.GetAvailability)request).PageSize
+                );
 
             return result;
         }
