@@ -16,6 +16,8 @@ namespace KooliProjekt.Application.Infrastructure.Results
             }
         }
 
+        public object Title { get; internal set; }
+
         public bool ShouldSerializeHasErrors()
         {
             return HasErrors;
