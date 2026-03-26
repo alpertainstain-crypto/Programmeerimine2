@@ -15,4 +15,5 @@ public class Appointment
     [Required]
     public int DoctorId { get; set; }
     public Doctor Doctor { get; set; } = default!;
+    public object Title { get; internal set; }
 }

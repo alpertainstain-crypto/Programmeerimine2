@@ -10,21 +10,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features
 {
-    public class AppointmetsQueryHandler : IRequestHandler<AppointmentsQuery, OperationResult<PagedResult<Appointment>>>
+    public class DoctorsQueryHandler : IRequestHandler<DoctorsQuery, OperationResult<PagedResult<Doctor>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public AppointmetsQueryHandler(ApplicationDbContext dbContext)
+        public DoctorsQueryHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<Appointment>>> Handle(AppointmentsQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<Doctor>>> Handle(DoctorsQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<PagedResult<Appointment>>();
+            var result = new OperationResult<PagedResult<Doctor>>();
 
             result.Value = await _dbContext
-                .Appointments
+                .Doctors 
                 .OrderBy(list => list.Time)
                 .GetPagedAsync(request.Page, request.PageSize);
 

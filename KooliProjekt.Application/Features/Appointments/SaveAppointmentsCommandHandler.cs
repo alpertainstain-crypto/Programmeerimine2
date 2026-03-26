@@ -1,4 +1,5 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Features.AdminOverrideList;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.Identity.Client;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace KooliProjekt.Application.Features.Appointments
 {
-    internal class SaveAppointmentsCommandHandler: IRequestHandler<SaveAdminOverrideCommandHandler, OperationResult>
+    internal class SaveAppointmentsCommandHandler: IRequestHandler<SaveAdminOverrideCommand, OperationResult>
     {
         private readonly ApplicationDbContext _dbContext;
         private OperationResult result;
@@ -21,28 +22,43 @@ namespace KooliProjekt.Application.Features.Appointments
             _dbContext = dbContext;
         }
 
-            public async Task<OperationResult> Handle(SaveAppointmentsCommand request, CancellationToken cancellationToken)
-             {
-             var list = new OperationResult();
+        public async Task<OperationResult> Handle(SaveAppointmentsCommand request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult();
 
-            var page = new Appointment();
+            Appointment appointment;
+
             if (request.Id == 0)
-                {
-                await _dbContext.Appointments.AddAsync(list);
+            {
+                appointment = new Appointment();
+                appointment.Title = request.Title;
+
+                await _dbContext.Appointments.AddAsync(appointment);
             }
             else
+            {
+                appointment = await _dbContext.Appointments.FindAsync(request.Id);
+
+                if (appointment == null)
                 {
-                    page = await _dbContext.Appointments.FindAsync(request.Id);
-               
-                list.Title = request.Title;
+                    result.AddError("Appointment not found");
+                    return result;
+                }
 
-                await _dbContext.SaveChangesAsync();
-
-                return result;
+                appointment.Title = request.Title;
             }
+
+            await _dbContext.SaveChangesAsync();
+
+            return result;
         }
 
         public Task<OperationResult> Handle(SaveAdminOverrideCommandHandler request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationResult> Handle(SaveAdminOverrideCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

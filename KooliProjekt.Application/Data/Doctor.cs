@@ -14,4 +14,6 @@ public class Doctor
     public string Specialty { get; set; } = default!;
 
     public List<Appointment> Appointments { get; set; } = new();
+    public object Time { get; internal set; }
+    public object Title { get; internal set; }
 }

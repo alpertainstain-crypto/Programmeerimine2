@@ -3,7 +3,7 @@ using MediatR;
 
 namespace KooliProjekt.Application.Features
 {
-    public class GetAvailability : IRequest<OperationResult<object>>
+    public class GetAvailabilityQuery : IRequest<OperationResult<object>>
     {
         public int Id { get; set; }
         public int Page { get; internal set; }
