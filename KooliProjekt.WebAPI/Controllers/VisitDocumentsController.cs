@@ -1,16 +1,16 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using KooliProjekt.Application.Features;
-using KooliProjekt.Application.Features.Services;
+using KooliProjekt.Application.Features.VisiteDocument;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KooliProjekt.WebAPI.Controllers
 {
-    public class ServicesController : ApiControllerBase
+    public class VisitDocumentsController : ApiControllerBase
     {
         private readonly IMediator _mediator;
-        public ServicesController(IMediator mediator)
+        public VisitDocumentsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -19,14 +19,14 @@ namespace KooliProjekt.WebAPI.Controllers
         [Route("")]
         public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var query = new GetServices { Page = page, PageSize = pageSize };
+            var query = new GetVisitDocument { Page = page, PageSize = pageSize };
             var result = await _mediator.Send(query);
 
             return Result(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save([FromBody] SaveServicesCommand command)
+        public async Task<IActionResult> Save([FromBody] SaveVisitDocumentCommand command)
         {
             var result = await _mediator.Send(command);
 
@@ -34,3 +34,4 @@ namespace KooliProjekt.WebAPI.Controllers
         }
     }
 }
+

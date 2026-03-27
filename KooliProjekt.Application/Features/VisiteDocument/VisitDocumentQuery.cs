@@ -1,11 +1,11 @@
-﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features
+namespace KooliProjekt.Application.Features.VisiteDocument
 {
-    public class AdminOverrideQuery : IRequest<OperationResult<PagedResult<AdminOverride>>>
+    public class VisitDocumentQuery : IRequest<OperationResult<PagedResult<VisitDocument>>>
     {
         public int Page { get; set; }
         public int PageSize { get; set; }

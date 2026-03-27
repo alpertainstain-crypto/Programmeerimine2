@@ -7,24 +7,24 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features
+namespace KooliProjekt.Application.Features.InvoiceLines
 {
-    public class AdminOverrideQueryHandler : IRequestHandler<AdminOverrideQuery, OperationResult<PagedResult<AdminOverride>>>
+    public class GetInvoiceLinesHandler : IRequestHandler<GetInvoiceLines, OperationResult<PagedResult<InvoiceLine>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public AdminOverrideQueryHandler(ApplicationDbContext dbContext)
+        public GetInvoiceLinesHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<AdminOverride>>> Handle(AdminOverrideQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<InvoiceLine>>> Handle(GetInvoiceLines request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<PagedResult<AdminOverride>>();
+            var result = new OperationResult<PagedResult<InvoiceLine>>();
 
             result.Value = await _dbContext
-                .AdminOverride
-                .OrderBy(list => list.Start)
+                .InvoiceLines
+                .OrderBy(x => x.Id)
                 .GetPagedAsync(request.Page, request.PageSize);
 
             return result;

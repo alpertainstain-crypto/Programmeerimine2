@@ -9,26 +9,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features
 {
-    public class GetAvailabilityHandler : IRequestHandler<GetAvailability, OperationResult<PagedResult<global::Availability>>>
+    public class AvailabilityQueryHandler : IRequestHandler<AvailabilityQuery, OperationResult<PagedResult<global::Availability>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public GetAvailabilityHandler(ApplicationDbContext dbContext)
+        public AvailabilityQueryHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<global::Availability>>> Handle(GetAvailability request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<global::Availability>>> Handle(AvailabilityQuery request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<PagedResult<global::Availability>>();
 
             result.Value = await _dbContext
                 .Availability
-                .OrderBy(x => x.Id)
-                .GetPagedAsync(
-                    ((KooliProjekt.Application.Features.GetAvailability)request).Page,
-                    ((KooliProjekt.Application.Features.GetAvailability)request).PageSize
-                );
+                .OrderBy(x => x.Date)
+                .GetPagedAsync(request.Page, request.PageSize);
 
             return result;
         }

@@ -15,9 +15,10 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        [Route("")]
+        public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var query = new GetAvailability();
+            var query = new AvailabilityQuery { Page = page, PageSize = pageSize };
             var result = await _mediator.Send(query);
 
             return Result(result);

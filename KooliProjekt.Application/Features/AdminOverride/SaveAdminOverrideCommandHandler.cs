@@ -9,7 +9,6 @@ using KooliProjekt.Application.Features.AdminOverrideList;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace KooliProjekt.Application.Features
 {
@@ -26,19 +25,28 @@ namespace KooliProjekt.Application.Features
 		{
 			var result = new OperationResult();
 
-			var list = new AdminOverride();
+			var adminOverride = new AdminOverride();
 			if (request.Id == 0)
 			{
-				await _dbContext.AdminOverride.AddAsync(list);
+				await _dbContext.AdminOverride.AddAsync(adminOverride, cancellationToken);
 			}
 			else
 			{
-				list = await _dbContext.AdminOverride.FindAsync(request.Id);
+				adminOverride = await _dbContext.AdminOverride.FindAsync(new object[] { request.Id }, cancellationToken: cancellationToken);
+				if (adminOverride == null)
+				{
+					result.AddError("Admin Override not found");
+					return result;
+				}
 			}
 
-			list.Title = request.Title;
+			adminOverride.Reason = request.Title ?? adminOverride.Reason;
+			adminOverride.Start = request.Start ?? adminOverride.Start;
+			adminOverride.End = request.End ?? adminOverride.End;
+			adminOverride.DoctorId = request.DoctorId > 0 ? request.DoctorId : adminOverride.DoctorId;
+			adminOverride.CreatedBy = request.CreatedBy > 0 ? request.CreatedBy : adminOverride.CreatedBy;
 
-			await _dbContext.SaveChangesAsync();
+			await _dbContext.SaveChangesAsync(cancellationToken);
 
 			return result;
 		}

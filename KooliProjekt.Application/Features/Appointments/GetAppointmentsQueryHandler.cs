@@ -9,22 +9,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features
 {
-    public class AdminOverrideQueryHandler : IRequestHandler<AdminOverrideQuery, OperationResult<PagedResult<AdminOverride>>>
+    public class GetAppointmentsQueryHandler : IRequestHandler<AppointmentsQuery, OperationResult<PagedResult<Appointment>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public AdminOverrideQueryHandler(ApplicationDbContext dbContext)
+        public GetAppointmentsQueryHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<AdminOverride>>> Handle(AdminOverrideQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<Appointment>>> Handle(AppointmentsQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<PagedResult<AdminOverride>>();
+            var result = new OperationResult<PagedResult<Appointment>>();
 
             result.Value = await _dbContext
-                .AdminOverride
-                .OrderBy(list => list.Start)
+                .Appointments
+                .OrderBy(x => x.Id)
                 .GetPagedAsync(request.Page, request.PageSize);
 
             return result;

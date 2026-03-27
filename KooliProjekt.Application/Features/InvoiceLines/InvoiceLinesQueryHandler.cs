@@ -1,29 +1,28 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features
+namespace KooliProjekt.Application.Features.InvoiceLines
 {
-    public class GetAppointmentsHandler : IRequestHandler<AppointmentsQuery, OperationResult<PagedResult<Appointment>>>
+    public class InvoiceLinesQueryHandler : IRequestHandler<InvoiceLinesQuery, OperationResult<PagedResult<InvoiceLine>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public GetAppointmentsHandler(ApplicationDbContext dbContext)
+        public InvoiceLinesQueryHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<Appointment>>> Handle(AppointmentsQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<InvoiceLine>>> Handle(InvoiceLinesQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<PagedResult<Appointment>>();
+            var result = new OperationResult<PagedResult<InvoiceLine>>();
 
             result.Value = await _dbContext
-                .Appointments
+                .InvoiceLines
                 .OrderBy(x => x.Id)
                 .GetPagedAsync(request.Page, request.PageSize);
 

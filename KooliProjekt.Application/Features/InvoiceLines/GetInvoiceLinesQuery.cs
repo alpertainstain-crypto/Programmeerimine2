@@ -3,9 +3,9 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features
+namespace KooliProjekt.Application.Features.InvoiceLines
 {
-    public class AdminOverrideQuery : IRequest<OperationResult<PagedResult<AdminOverride>>>
+    public class GetInvoiceLines : IRequest<OperationResult<PagedResult<InvoiceLine>>>
     {
         public int Page { get; set; }
         public int PageSize { get; set; }

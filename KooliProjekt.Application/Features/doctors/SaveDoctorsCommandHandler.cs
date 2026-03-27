@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
-using KooliProjekt.Application.Features.AdminOverrideList;
 using KooliProjekt.Application.Features.doctors;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace KooliProjekt.Application.Features
 {
@@ -27,19 +25,24 @@ namespace KooliProjekt.Application.Features
         {
             var result = new OperationResult();
 
-            var list = new Doctor();
+            var doctor = new Doctor();
             if (request.Id == 0)
             {
-                await _dbContext.Doctors.AddAsync(list);
+                await _dbContext.Doctors.AddAsync(doctor, cancellationToken);
             }
             else
             {
-                list = await _dbContext.Doctors.FindAsync(request.Id);
+                doctor = await _dbContext.Doctors.FindAsync(new object[] { request.Id }, cancellationToken: cancellationToken);
+                if (doctor == null)
+                {
+                    result.AddError("Doktor not found");
+                    return result;
+                }
             }
 
-            list.Title = request.Title;
+            doctor.Name = request.title;
 
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             return result;
         }

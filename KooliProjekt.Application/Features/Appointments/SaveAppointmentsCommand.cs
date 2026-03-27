@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace KooliProjekt.Application.Features.Appointments
 {
-    internal class SaveAppointmentsCommand: IRequest<OperationResult>, ITransactional
+    public class SaveAppointmentsCommand: IRequest<OperationResult>, ITransactional
     {
+        public int Id { get; set; }
+        public DateTime? AppointmentTime { get; set; }
+        public int UserId { get; set; }
+        public int DoctorId { get; set; }
         public string title { get; set; } = default!;
-        public object Title { get; internal set; }
-        public int Id { get; internal set; }
     }
 }

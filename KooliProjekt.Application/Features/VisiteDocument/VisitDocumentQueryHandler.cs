@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
@@ -6,23 +6,23 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features
+namespace KooliProjekt.Application.Features.VisiteDocument
 {
-    public class GetInvoiceLinesHandler : IRequestHandler<GetInvoiceLines, OperationResult<PagedResult<InvoiceLine>>>
+    public class VisitDocumentQueryHandler : IRequestHandler<VisitDocumentQuery, OperationResult<PagedResult<VisitDocument>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public GetInvoiceLinesHandler(ApplicationDbContext dbContext)
+        public VisitDocumentQueryHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<PagedResult<InvoiceLine>>> Handle(GetInvoiceLines request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<VisitDocument>>> Handle(VisitDocumentQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<PagedResult<InvoiceLine>>();
+            var result = new OperationResult<PagedResult<VisitDocument>>();
 
             result.Value = await _dbContext
-                .InvoiceLines
+                .VisitDocuments
                 .OrderBy(x => x.Id)
                 .GetPagedAsync(request.Page, request.PageSize);
 

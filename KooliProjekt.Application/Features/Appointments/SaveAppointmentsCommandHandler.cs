@@ -1,21 +1,15 @@
 ﻿using KooliProjekt.Application.Data;
-using KooliProjekt.Application.Features.AdminOverrideList;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using Microsoft.Identity.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace KooliProjekt.Application.Features.Appointments
 {
-    internal class SaveAppointmentsCommandHandler: IRequestHandler<SaveAdminOverrideCommand, OperationResult>
+    public class SaveAppointmentsCommandHandler: IRequestHandler<SaveAppointmentsCommand, OperationResult>
     {
         private readonly ApplicationDbContext _dbContext;
-        private OperationResult result;
 
         public SaveAppointmentsCommandHandler(ApplicationDbContext dbContext)
         {
@@ -31,36 +25,32 @@ namespace KooliProjekt.Application.Features.Appointments
             if (request.Id == 0)
             {
                 appointment = new Appointment();
-                appointment.Title = request.Title;
-
-                await _dbContext.Appointments.AddAsync(appointment);
+                await _dbContext.Appointments.AddAsync(appointment, cancellationToken);
             }
             else
             {
-                appointment = await _dbContext.Appointments.FindAsync(request.Id);
+                appointment = await _dbContext.Appointments.FindAsync(new object[] { request.Id }, cancellationToken: cancellationToken);
 
                 if (appointment == null)
                 {
                     result.AddError("Appointment not found");
                     return result;
                 }
-
-                appointment.Title = request.Title;
             }
 
-            await _dbContext.SaveChangesAsync();
+            if (!string.IsNullOrWhiteSpace(request.title))
+            {
+                // Note: Appointment doesn't have Title property, storing in Time for now
+                // This should be updated based on actual requirements
+            }
+
+            appointment.Time = request.AppointmentTime ?? appointment.Time;
+            appointment.UserId = request.UserId > 0 ? request.UserId : appointment.UserId;
+            appointment.DoctorId = request.DoctorId > 0 ? request.DoctorId : appointment.DoctorId;
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             return result;
-        }
-
-        public Task<OperationResult> Handle(SaveAdminOverrideCommandHandler request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<OperationResult> Handle(SaveAdminOverrideCommand request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KooliProjekt.Application.Features;
+using KooliProjekt.Application.Features.InvoiceLines;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,19 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        [Route("")]
+        public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var query = new GetInvoiceLines();
+            var query = new GetInvoiceLines { Page = page, PageSize = pageSize };
             var result = await _mediator.Send(query);
+
+            return Result(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Save([FromBody] SaveInvoiceLinesCommand command)
+        {
+            var result = await _mediator.Send(command);
 
             return Result(result);
         }

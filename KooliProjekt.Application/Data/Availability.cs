@@ -4,19 +4,26 @@ using System.ComponentModel.DataAnnotations;
 public class Availability
 {
     public int Id { get; set; }
+
+    [Required(ErrorMessage = "Doktori ID on kohustuslik")]
+    [Range(1, int.MaxValue, ErrorMessage = "Doktori ID peab olema suurem kui 0")]
     public int DoctorId { get; set; }
-    [Required]
+
+    [Required(ErrorMessage = "Nädalapäev on kohustuslik")]
+    [Range(0, 6, ErrorMessage = "Nädalapäev peab olema 0-6 vahel")]
     public int DayOfWeek { get; set; }
-    [Required]
+
+    [Required(ErrorMessage = "Algusaeg on kohustuslik")]
     public TimeSpan StartTime { get; set; }
-    [Required]
+
+    [Required(ErrorMessage = "Lõpuaeg on kohustuslik")]
     public TimeSpan EndTime { get; set; }
-    [Required]
+
+    [Required(ErrorMessage = "Kuupäev on kohustuslik")]
     public DateTime Date { get; set; }
 
     public bool IsException { get; set; }
-    [Required]
-    [MaxLength(225)]
-    [MinLength(1)]
+
+    [Required(ErrorMessage = "Doktor on kohustuslik")]
     public Doctor Doctor { get; set; } = default!;
 }
