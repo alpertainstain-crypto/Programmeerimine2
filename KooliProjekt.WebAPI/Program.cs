@@ -48,6 +48,14 @@ namespace KooliProjekt.WebAPI
                 app.UseSwaggerUI();
             }
 
+            // Create database and seed data
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                dbContext.Database.Migrate();
+                SeedData.Generate(dbContext);
+            }
+
             app.UseAuthorization();
 
 

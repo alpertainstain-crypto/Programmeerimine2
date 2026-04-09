@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KooliProjekt.Application.Features;
+using KooliProjekt.Application.Features.Availability;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,5 +24,16 @@ namespace KooliProjekt.WebAPI.Controllers
 
             return Result(result);
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var command = new DeleteAvailabilityCommand { Id = id };
+            var result = await _mediator.Send(command);
+
+            return Result(result);
+        }
     }
 }
+

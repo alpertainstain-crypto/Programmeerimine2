@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KooliProjekt.Application.Features;
+using KooliProjekt.Application.Features.doctors;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,16 @@ namespace KooliProjekt.WebAPI.Controllers
         {
             var query = new DoctorsQuery { Page = page, PageSize = pageSize };
             var result = await _mediator.Send(query);
+
+            return Result(result);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var command = new DeleteDoctorCommand { Id = id };
+            var result = await _mediator.Send(command);
 
             return Result(result);
         }
