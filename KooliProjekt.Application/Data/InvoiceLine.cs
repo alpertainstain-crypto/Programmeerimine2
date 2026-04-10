@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class InvoiceLine
+public class InvoiceLine : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Arve ID on kohustuslik")]
     [Range(1, int.MaxValue, ErrorMessage = "Arve ID peab olema suurem kui 0")]

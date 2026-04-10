@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class Service
+public class Service : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Teenuse kood on kohustuslik")]
     [MaxLength(20, ErrorMessage = "Kood ei saa olla pikem kui 20 märki")]

@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
@@ -10,21 +11,31 @@ namespace KooliProjekt.Application.Features
 {
     public class GetUsersHandler : IRequestHandler<GetUser, OperationResult<PagedResult<User>>>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IUserRepository _userRepository;
 
-        public GetUsersHandler(ApplicationDbContext dbContext)
+        public GetUsersHandler(IUserRepository userRepository)
         {
-            _dbContext = dbContext;
+            _userRepository = userRepository;
         }
 
         public async Task<OperationResult<PagedResult<User>>> Handle(GetUser request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<PagedResult<User>>();
 
-            result.Value = await _dbContext
-                .Users
+            var users = await _userRepository.GetAllAsync(cancellationToken);
+            var pagedResult = users
                 .OrderBy(x => x.Name)
-                .GetPagedAsync(request.Page, request.PageSize);
+                .Skip((request.Page - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .ToList();
+
+            result.Value = new PagedResult<User>
+            {
+                Items = pagedResult,
+                TotalCount = users.Count,
+                Page = request.Page,
+                PageSize = request.PageSize
+            };
 
             return result;
         }

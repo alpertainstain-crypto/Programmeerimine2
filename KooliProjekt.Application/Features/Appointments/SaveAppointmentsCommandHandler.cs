@@ -1,4 +1,5 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using System;
@@ -9,11 +10,11 @@ namespace KooliProjekt.Application.Features.Appointments
 {
     public class SaveAppointmentsCommandHandler: IRequestHandler<SaveAppointmentsCommand, OperationResult>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IAppointmentRepository _appointmentRepository;
 
-        public SaveAppointmentsCommandHandler(ApplicationDbContext dbContext)
+        public SaveAppointmentsCommandHandler(IAppointmentRepository appointmentRepository)
         {
-            _dbContext = dbContext;
+            _appointmentRepository = appointmentRepository;
         }
 
         public async Task<OperationResult> Handle(SaveAppointmentsCommand request, CancellationToken cancellationToken)
@@ -25,11 +26,11 @@ namespace KooliProjekt.Application.Features.Appointments
             if (request.Id == 0)
             {
                 appointment = new Appointment();
-                await _dbContext.Appointments.AddAsync(appointment, cancellationToken);
+                await _appointmentRepository.AddAsync(appointment, cancellationToken);
             }
             else
             {
-                appointment = await _dbContext.Appointments.FindAsync(new object[] { request.Id }, cancellationToken: cancellationToken);
+                appointment = await _appointmentRepository.GetByIdAsync(request.Id, cancellationToken);
 
                 if (appointment == null)
                 {
@@ -48,7 +49,7 @@ namespace KooliProjekt.Application.Features.Appointments
             appointment.UserId = request.UserId > 0 ? request.UserId : appointment.UserId;
             appointment.DoctorId = request.DoctorId > 0 ? request.DoctorId : appointment.DoctorId;
 
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _appointmentRepository.SaveChangesAsync(cancellationToken);
 
             return result;
         }

@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class Appointment
+public class Appointment : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Vastuvõtu aeg on kohustuslik")]
     public DateTime Time { get; set; }

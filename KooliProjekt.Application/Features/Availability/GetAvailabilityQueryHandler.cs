@@ -2,30 +2,40 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features
 {
     public class GetAvailabilityQueryHandler : IRequestHandler<AvailabilityQuery, OperationResult<PagedResult<global::Availability>>>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IAvailabilityRepository _availabilityRepository;
 
-        public GetAvailabilityQueryHandler(ApplicationDbContext dbContext)
+        public GetAvailabilityQueryHandler(IAvailabilityRepository availabilityRepository)
         {
-            _dbContext = dbContext;
+            _availabilityRepository = availabilityRepository;
         }
 
         public async Task<OperationResult<PagedResult<global::Availability>>> Handle(AvailabilityQuery request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<PagedResult<global::Availability>>();
 
-            result.Value = await _dbContext
-                .Availability
+            var availabilities = await _availabilityRepository.GetAllAsync(cancellationToken);
+            var pagedResult = availabilities
                 .OrderBy(x => x.Id)
-                .GetPagedAsync(request.Page, request.PageSize);
+                .Skip((request.Page - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .ToList();
+
+            result.Value = new PagedResult<Availability>
+            {
+                Items = pagedResult,
+                TotalCount = availabilities.Count,
+                Page = request.Page,
+                PageSize = request.PageSize
+            };
 
             return result;
         }

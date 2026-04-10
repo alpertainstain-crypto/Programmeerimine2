@@ -1,11 +1,9 @@
-
-
 using System;
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class AdminOverride
+public class AdminOverride : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Doktori ID on kohustuslik")]
     [Range(1, int.MaxValue, ErrorMessage = "Doktori ID peab olema suurem kui 0")]

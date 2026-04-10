@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class User
+public class User : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Kasutaja nimi on kohustuslik")]
     [MaxLength(225, ErrorMessage = "Nimi ei saa olla pikem kui 225 märki")]

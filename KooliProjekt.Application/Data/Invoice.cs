@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class Invoice
+public class Invoice : Entity
 {
-    public int Id { get; set; }
     [Required]
     [StringLength(20)]
     public string InvoiceNo { get; set; } = default!;

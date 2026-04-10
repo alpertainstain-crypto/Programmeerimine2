@@ -1,4 +1,5 @@
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using System;
@@ -9,34 +10,34 @@ namespace KooliProjekt.Application.Features.Availability
 {
     public class SaveAvailabilityCommandHandler : IRequestHandler<SaveAvailabilityCommand, OperationResult>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IAvailabilityRepository _availabilityRepository;
         private OperationResult result;
 
-        public SaveAvailabilityCommandHandler(ApplicationDbContext dbContext)
+        public SaveAvailabilityCommandHandler(IAvailabilityRepository availabilityRepository)
         {
-            _dbContext = dbContext;
+            _availabilityRepository = availabilityRepository;
             result = new OperationResult();
         }
 
         public async Task<OperationResult> Handle(SaveAvailabilityCommand request, CancellationToken cancellationToken)
         {
-            var list = new global::Availability();
+            global::Availability list;
 
             if (request.Id == 0)
             {
-                list.DoctorId = 1;
-                await _dbContext.Availability.AddAsync(list);
+                list = new global::Availability { DoctorId = 1 };
+                await _availabilityRepository.AddAsync(list, cancellationToken);
             }
             else
             {
-                list = await _dbContext.Availability.FindAsync(request.Id);
+                list = await _availabilityRepository.GetByIdAsync(request.Id, cancellationToken);
                 if (list != null)
                 {
                     list.DoctorId = 1;
                 }
             }
 
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _availabilityRepository.SaveChangesAsync(cancellationToken);
 
             return result;
         }

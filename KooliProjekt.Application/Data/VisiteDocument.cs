@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class VisitDocument
+public class VisitDocument : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Vastuvõtu ID on kohustuslik")]
     [Range(1, int.MaxValue, ErrorMessage = "Vastuvõtu ID peab olema suurem kui 0")]

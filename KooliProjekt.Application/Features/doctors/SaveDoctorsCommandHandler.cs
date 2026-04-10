@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Features.doctors;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
@@ -14,25 +15,26 @@ namespace KooliProjekt.Application.Features
 {
     public class SaveDoctorsCommandHandler : IRequestHandler<SaveDoctorsCommand, OperationResult>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IDoctorRepository _doctorRepository;
 
-        public SaveDoctorsCommandHandler(ApplicationDbContext dbContext)
+        public SaveDoctorsCommandHandler(IDoctorRepository doctorRepository)
         {
-            _dbContext = dbContext;
+            _doctorRepository = doctorRepository;
         }
 
         public async Task<OperationResult> Handle(SaveDoctorsCommand request, CancellationToken cancellationToken)
         {
             var result = new OperationResult();
 
-            var doctor = new Doctor();
+            Doctor doctor;
             if (request.Id == 0)
             {
-                await _dbContext.Doctors.AddAsync(doctor, cancellationToken);
+                doctor = new Doctor();
+                await _doctorRepository.AddAsync(doctor, cancellationToken);
             }
             else
             {
-                doctor = await _dbContext.Doctors.FindAsync(new object[] { request.Id }, cancellationToken: cancellationToken);
+                doctor = await _doctorRepository.GetByIdAsync(request.Id, cancellationToken);
                 if (doctor == null)
                 {
                     result.AddError("Doktor not found");
@@ -42,7 +44,7 @@ namespace KooliProjekt.Application.Features
 
             doctor.Name = request.title;
 
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _doctorRepository.SaveChangesAsync(cancellationToken);
 
             return result;
         }

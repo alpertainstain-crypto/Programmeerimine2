@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using KooliProjekt.Application.Data;
 
-public class Doctor
+public class Doctor : Entity
 {
-    public int Id { get; set; }
 
     [Required(ErrorMessage = "Doktori nimi on kohustuslik")]
     [MaxLength(225, ErrorMessage = "Nimi ei saa olla pikem kui 225 märki")]
