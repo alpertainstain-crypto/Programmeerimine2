@@ -1,0 +1,276 @@
+[33mcommit 6408b9b75d2b81b4efb0cfa492cf0491e654a488[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrepository[m[33m, [m[1;31morigin/repository[m[33m)[m
+Author: siim803 <siim.uutma@techno.ee>
+Date:   Fri Apr 10 10:47:15 2026 +0300
+
+    Repositorys
+
+[33mcommit b85c698652d36ed4433432005ab2bbf8423acbcd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: siim803 <siim.uutma@techno.ee>
+Date:   Thu Apr 9 11:23:39 2026 +0300
+
+    init repository
+
+[33mcommit 0e957af2e03dd40d9f23b49bf2b43b9baf700c49[m
+Author: siim803 <siim.uutma@techno.ee>
+Date:   Thu Apr 9 11:04:53 2026 +0300
+
+    Delete and deleteHandlers
+
+[33mcommit 7a4dec614abe1f03075bb1f2f43cc5148a8ead48[m
+Author: siim uutma <siim.uutma@techno.ee>
+Date:   Fri Mar 27 11:37:15 2026 +0200
+
+    Almost all folders are finished
+
+[33mcommit 66ac46835f54b04120f0e37bd060211b39e7d83f[m
+Author: siim uutma <siim.uutma@techno.ee>
+Date:   Thu Mar 26 10:58:55 2026 +0200
+
+    Availability and Doctors done
+
+[33mcommit 4a5827e3d617be1f91b000e8adc4ac71b52ee259[m
+Author: siim803 <siim.uutma@tptlive.ee>
+Date:   Fri Mar 20 10:16:29 2026 +0200
+
+    appointments file done
+
+[33mcommit bf78abb41f6657e28be112f410b4d0da6d98694c[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Sat Mar 7 22:31:24 2026 +0200
+
+    .page error in AvailabilityHandler
+
+[33mcommit 99cdb69946bc58e5026adc1e577a0bab5e7e761b[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Sat Mar 7 22:12:46 2026 +0200
+
+    GetAvailabilityQuery
+
+[33mcommit 6f3bcbcc69a6a34208b2a18fc87bd31091f7ceff[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Thu Feb 26 11:37:52 2026 +0200
+
+    yes
+
+[33mcommit d987d4151c5ef26a960306a3adfa32a93ba72fca[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Sun Feb 15 22:18:35 2026 +0200
+
+    AdminOverride class features done
+
+[33mcommit be8f09bff10b33b377f8c0030ccc74147b44ac9d[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Sun Feb 15 15:46:23 2026 +0200
+
+    new klass features
+
+[33mcommit 42bbd9ee08dcadac29fd0474790366564fab3eb6[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Fri Feb 13 11:33:19 2026 +0200
+
+    fixed some data type names
+    
+    Finish changing GetAppointmentQuery
+
+[33mcommit d5a9533af1eb89dbb56b53513447dc49d4b1f654[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Thu Feb 12 11:34:54 2026 +0200
+
+    handler fix
+
+[33mcommit ca29f0eed162f1f5c2ed61a406da12bea96e95af[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Fri Feb 6 11:40:26 2026 +0200
+
+    yes
+
+[33mcommit 923dbdb32cb3a548f0e4913f00649b95d373723d[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Fri Feb 6 11:39:01 2026 +0200
+
+    GetAdminOverrideQueryHandler
+
+[33mcommit aae226f1e3c3d35b6683824cfecd2c17739ec315[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Fri Feb 6 10:57:23 2026 +0200
+
+    more bug fixes
+
+[33mcommit fcc5a688471eecd1485caa747010b0665e40d98e[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Fri Feb 6 10:53:17 2026 +0200
+
+    bug fixes
+
+[33mcommit 48cdb23e6cda0beb9b63c7c004090e9ba8c2d37a[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Thu Jan 22 11:32:44 2026 +0200
+
+    class rules
+
+[33mcommit 80108309c2d775f2f03dd4fb2f7905eb9a825b12[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Mon Jan 19 23:22:30 2026 +0200
+
+    moved classes to there own files
+
+[33mcommit e812ae4c808f142eba6ceebffc537f8942debcd7[m
+Merge: 32fbff8 b3bd199
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Mon Jan 19 21:38:58 2026 +0200
+
+    Merge branch 'main' of https://github.com/alpertainstain-crypto/Programmeerimine2
+
+[33mcommit 32fbff867bfd676088dcefd7de0ea9cf6f8ad264[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Mon Jan 19 21:38:54 2026 +0200
+
+    Update Appointments.cs
+
+[33mcommit b3bd199294d3f64e0581845351141794ec56f88a[m
+Merge: 5b24015 f0072cd
+Author: Gunnar Peipman <gpeipman@hotmail.com>
+Date:   Fri Jan 16 09:56:33 2026 +0200
+
+    Merge branch 'main' of https://github.com/alpertainstain-crypto/Programmeerimine2
+
+[33mcommit 5b240158f48e635b713a5e3b148fe40174d9fffd[m
+Author: Gunnar Peipman <gpeipman@hotmail.com>
+Date:   Fri Jan 16 09:56:21 2026 +0200
+
+    lisatud testide projekt
+
+[33mcommit f0072cdded2a9042012f0acdcdcb001af506051e[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Thu Jan 15 00:42:06 2026 +0200
+
+    started on 11.17
+
+[33mcommit 374e9ef4164525d6554f185c03e328bbac43e356[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Dec 12 11:12:37 2025 +0200
+
+    Bug Fixes
+
+[33mcommit ca833d49a912f8dd19d9d7dec43997cf24c71308[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Dec 12 09:49:44 2025 +0200
+
+    empty
+
+[33mcommit 849d2ee7979f42f55e1a378c5347936ab0aa1400[m
+Author: siim803 <alpert.ainstain@gmail.com>
+Date:   Fri Dec 12 01:58:47 2025 +0200
+
+    31.10 is done to 6 point
+
+[33mcommit ac79b0ba2e88b183b98f3c24d5db89e62803a661[m
+Author: siim803 <alpert.ainstain@gmail.com>
+Date:   Fri Dec 12 00:25:05 2025 +0200
+
+    Update ApplicationDbContext.cs
+
+[33mcommit dbcbdf0c801a777a345a1de4abbd2ab790082355[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Dec 5 11:31:09 2025 +0200
+
+    Got done the whole 17.10 lesson
+
+[33mcommit 2a1b046a078de1ad30cd565a9af32fb31bb3c4da[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Dec 5 09:05:09 2025 +0200
+
+    maybe classes work idk
+
+[33mcommit 55f77a650efa2db88ccc0e979055dafde135e8d6[m
+Author: siim803 <siimuutma7@gmail.com>
+Date:   Thu Nov 20 00:09:47 2025 +0200
+
+    classes are ready to go
+
+[33mcommit c6a7a44ef084cb33f009732e445ab25cc053f5bf[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 11:36:16 2025 +0200
+
+    Add files via upload
+
+[33mcommit 81eb93252b7dff3271c1df369df856e239c7b89d[m
+Merge: dcd66c3 8417d96
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 11:18:17 2025 +0200
+
+    Merge branch 'main' of https://github.com/alpertainstain-crypto/Programmeerimine2
+
+[33mcommit dcd66c35220e1e81fee2b6bb59397e8b9b447d7b[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 11:18:14 2025 +0200
+
+    ListsToDoQuery added
+
+[33mcommit 8417d965903aebd4848653ea4d45142321bb2f22[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 10:40:21 2025 +0200
+
+    Delete KooliProjekt.Application/Features
+
+[33mcommit 69d15e71554a03547718e5761e05a760e760dc0b[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 10:40:03 2025 +0200
+
+    Create Features
+
+[33mcommit f28afd273e4f2f5e6219cd4a056864e1410396eb[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 10:32:21 2025 +0200
+
+    Add files via upload
+
+[33mcommit 96fc79cc5f013ec6d255b552acfd656af7df6708[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 10:31:45 2025 +0200
+
+    Add files via upload
+
+[33mcommit 7c720fdc0045cd9469c525044cc45ee9edb9fef8[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 10:29:06 2025 +0200
+
+    Add files via upload
+
+[33mcommit 3d817eef442205cd874c3dde3824d272499dbc8e[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 08:49:25 2025 +0200
+
+    Add files via upload
+
+[33mcommit 10487da9a2ed404bdd2c5bb85a8f9f0921b81798[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 31 08:47:49 2025 +0200
+
+    Delete Programmeerimine2 directory
+
+[33mcommit 159cc7f34e302ce9b40fb82d7c9fad4c6b3a014f[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Thu Oct 30 21:49:47 2025 +0200
+
+    Add files via upload
+
+[33mcommit acab715d199d684a002d20f94dfdf1d766c99cf6[m
+Author: Gunnar Peipman <gpeipman@hotmail.com>
+Date:   Fri Oct 17 09:34:39 2025 +0300
+
+    Puhas rakendus
+
+[33mcommit 3f748cc80a2a85edb71674efbfdb617c0a203813[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Thu Oct 16 23:42:02 2025 +0300
+
+    draw.io skeemid
+    
+    esimesed andmebaasi skeemid
+
+[33mcommit b7bb8e5c7854b4f78d9a42f61f99345b93d27958[m
+Author: Siim Uutma <alpert.ainstain@gmail.com>
+Date:   Fri Oct 10 08:47:28 2025 +0300
+
+    Initial commit

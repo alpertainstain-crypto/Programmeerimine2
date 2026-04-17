@@ -31,9 +31,9 @@ namespace KooliProjekt.Application.Features
 
             result.Value = new PagedResult<Appointment>
             {
-                Items = pagedResult,
-                TotalCount = appointments.Count,
-                Page = request.Page,
+                Results = pagedResult,
+                RowCount = appointments.Count,
+                CurrentPage = request.Page,
                 PageSize = request.PageSize
             };
 

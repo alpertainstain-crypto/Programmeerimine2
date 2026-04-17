@@ -29,11 +29,11 @@ namespace KooliProjekt.Application.Features
                 .Take(request.PageSize)
                 .ToList();
 
-            result.Value = new PagedResult<Availability>
+            result.Value = new PagedResult<global::Availability>
             {
-                Items = pagedResult,
-                TotalCount = availabilities.Count,
-                Page = request.Page,
+                Results = pagedResult,
+                RowCount = availabilities.Count,
+                CurrentPage = request.Page,
                 PageSize = request.PageSize
             };
 
