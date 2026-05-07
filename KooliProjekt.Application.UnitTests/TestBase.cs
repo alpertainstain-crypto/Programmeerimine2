@@ -43,5 +43,12 @@ namespace KooliProjekt.Application.UnitTests
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+        protected ApplicationDbContext GetFaultyDbContext()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>();
+            var dbContext = new ApplicationDbContext(options.Options);
+
+            return dbContext;
+        }
     }
 }

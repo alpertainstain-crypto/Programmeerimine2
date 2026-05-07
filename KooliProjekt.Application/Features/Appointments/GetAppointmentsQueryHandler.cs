@@ -28,6 +28,6 @@ namespace KooliProjekt.Application.Features
                 .GetPagedAsync(request.Page, request.PageSize);
 
             return result;
-        }
+        } 
     }
 }

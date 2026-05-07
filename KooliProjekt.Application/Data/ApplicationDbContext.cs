@@ -22,5 +22,6 @@ namespace KooliProjekt.Application.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<AdminOverride> AdminOverride { get; set; }
         public DbSet<VisitDocument> VisitDocuments { get; set; }
+        public DbSet<ToDoList> ToDoLists { get; set; }
     }
 }

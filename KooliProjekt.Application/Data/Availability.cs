@@ -1,29 +1,21 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class Availability
 {
     public int Id { get; set; }
-
-    [Required(ErrorMessage = "Doktori ID on kohustuslik")]
-    [Range(1, int.MaxValue, ErrorMessage = "Doktori ID peab olema suurem kui 0")]
     public int DoctorId { get; set; }
-
-    [Required(ErrorMessage = "Nädalapäev on kohustuslik")]
-    [Range(0, 6, ErrorMessage = "Nädalapäev peab olema 0-6 vahel")]
+    [Required]
     public int DayOfWeek { get; set; }
-
-    [Required(ErrorMessage = "Algusaeg on kohustuslik")]
+    [Required]
     public TimeSpan StartTime { get; set; }
-
-    [Required(ErrorMessage = "Lõpuaeg on kohustuslik")]
+    [Required]
     public TimeSpan EndTime { get; set; }
-
-    [Required(ErrorMessage = "Kuupäev on kohustuslik")]
-    public DateTime Date { get; set; }
+    [Required]
+    public Date Date { get; set; }
 
     public bool IsException { get; set; }
-
-    [Required(ErrorMessage = "Doktor on kohustuslik")]
+    [Required]
     public Doctor Doctor { get; set; } = default!;
 }

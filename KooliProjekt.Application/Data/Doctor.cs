@@ -3,17 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 public class Doctor
 {
-    public int Id { get; set; }
+    public int DoctorId { get; set; }
+    [Required(ErrorMessage = "Eesnimi on kohustuslik")]
+    public string FirstName { get; set; } = default!;
+    [Required(ErrorMessage = "Perekonnanimi on kohustuslik")]
+    public string LastName { get; set; } = default!;
+    [Required(ErrorMessage = "E-mail on kohustuslik")]
 
-    [Required(ErrorMessage = "Doktori nimi on kohustuslik")]
-    [MaxLength(225, ErrorMessage = "Nimi ei saa olla pikem kui 225 märki")]
-    [MinLength(1, ErrorMessage = "Nimi peab sisaldama vähemalt 1 märki")]
-    public string Name { get; set; } = default!;
-
-    [Required(ErrorMessage = "Spetsialiseerumine on kohustuslik")]
-    [MaxLength(225, ErrorMessage = "Spetsialiseerumine ei saa olla pikem kui 225 märki")]
-    [MinLength(1, ErrorMessage = "Spetsialiseerumine peab sisaldama vähemalt 1 märki")]
     public string Specialty { get; set; } = default!;
+    [Required(ErrorMessage = "Eriala on kohustuslik")]
 
-    public List<Appointment> Appointments { get; set; } = new();
+    public List<Availability> Availabilities { get; set; } = new List<Availability>();
 }
