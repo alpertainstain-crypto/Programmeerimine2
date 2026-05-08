@@ -4,6 +4,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class Availability
 {
+    [Key]
     public int Id { get; set; }
     public int DoctorId { get; set; }
     [Required]
@@ -15,7 +16,7 @@ public class Availability
     [Required]
     public Date Date { get; set; }
 
-    public bool IsException { get; set; }
+    public bool IsException { get; set; } = default!;
     [Required]
-    public Doctor Doctor { get; set; } = default!;
+    public Doctor Doctor { get; set; } 
 }

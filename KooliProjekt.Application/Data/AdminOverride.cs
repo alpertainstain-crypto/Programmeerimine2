@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class AdminOverride
 {
+    [Key]
     public int Id { get; set; }
     public int DoctorId { get; set; }
     [Required]
@@ -10,9 +11,10 @@ public class AdminOverride
     [Required]
     public DateTime End { get; set; }
     [Required]
-    public string Reason { get; set; } = default!;
-    [Required]
+    [MaxLength(100)]
+    public string Reason { get; set; }
+    public string? IsAdmin { get; set; }
     public int CreatedBy { get; set; }
     [Required]
-    public Doctor Doctor { get; set; } = default!;
+    public Doctor Doctor { get; set; } 
 }

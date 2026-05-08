@@ -2,21 +2,21 @@ using System.ComponentModel.DataAnnotations;
 
 public class InvoiceLine
 {
+    [Key]
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Arve ID on kohustuslik")]
-    [Range(1, int.MaxValue, ErrorMessage = "Arve ID peab olema suurem kui 0")]
+    [Required]
+    [Range(1, int.MaxValue)]
     public int InvoiceId { get; set; }
 
-    [Required(ErrorMessage = "Kirjeldus on kohustuslik")]
-    [MaxLength(500, ErrorMessage = "Kirjeldus ei saa olla pikem kui 500 märki")]
-    [MinLength(1, ErrorMessage = "Kirjeldus peab sisaldama vähemalt 1 märki")]
+    [Required]
+    [MaxLength(500)]
     public string Description { get; set; } = default!;
 
-    [Required(ErrorMessage = "Summa on kohustuslik")]
-    [Range(0.01, double.MaxValue, ErrorMessage = "Summa peab olema suurem kui 0")]
+    [Required]
+    [Range(0.01, double.MaxValue)]
     public decimal Amount { get; set; }
 
-    [Required(ErrorMessage = "Arve on kohustuslik")]
+    [Required]
     public Invoice Invoice { get; set; } = default!;
 }

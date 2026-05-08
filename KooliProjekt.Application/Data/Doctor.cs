@@ -3,15 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 public class Doctor
 {
+    [Key]
     public int DoctorId { get; set; }
-    [Required(ErrorMessage = "Eesnimi on kohustuslik")]
+    [Required]
+    [MaxLength(50)]
     public string FirstName { get; set; } = default!;
-    [Required(ErrorMessage = "Perekonnanimi on kohustuslik")]
+    [Required]
+    [MaxLength(50)]
     public string LastName { get; set; } = default!;
-    [Required(ErrorMessage = "E-mail on kohustuslik")]
+    [Required]
+    [MaxLength(100)]
 
     public string Specialty { get; set; } = default!;
-    [Required(ErrorMessage = "Eriala on kohustuslik")]
 
     public List<Availability> Availabilities { get; set; } = new List<Availability>();
 }

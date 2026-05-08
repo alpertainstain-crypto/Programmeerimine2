@@ -4,15 +4,17 @@ using System.ComponentModel.DataAnnotations;
 
 public class Invoice
 {
+    [Key]
     public int Id { get; set; }
     [Required]
-    [StringLength(20)]
-    public string InvoiceNo { get; set; } = default!;
+    [StringLength(120)]
+    public int InvoiceNo { get; set; } = default!;
     [Required]
     public DateTime InvoiceDate { get; set; }
     [Required]
     public DateTime DueDate { get; set; }
     [Required]
+    [StringLength(20)]
     public string Status { get; set; } = default!;
     [Required]
     [Range(0, double.MaxValue)]
