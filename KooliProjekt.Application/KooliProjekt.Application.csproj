@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dto\" />
-    <Folder Include="Features\ToDoLists\" />
+    <Compile Remove="Features\ToDoLists\**" />
+    <EmbeddedResource Remove="Features\ToDoLists\**" />
+    <None Remove="Features\ToDoLists\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Migrations\" />
   </ItemGroup>
 

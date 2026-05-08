@@ -11,7 +11,7 @@ namespace KooliProjekt.Application.Dto
         public int id { get; set; }
         public int InvoiceId { get; set; }
         public string Description { get; set; }
-        public decimal Amount { get; set; }
+        public decimal Amount { get; set; } 
         public Invoice invoice { get; set; }
     }
 }

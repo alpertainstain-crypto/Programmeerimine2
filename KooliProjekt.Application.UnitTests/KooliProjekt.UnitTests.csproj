@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <Folder Include="Features\AdminOverride\" />
+    <Folder Include="Features\Appointments\" />
     <Folder Include="Features\Availability\" />
   </ItemGroup>
 
