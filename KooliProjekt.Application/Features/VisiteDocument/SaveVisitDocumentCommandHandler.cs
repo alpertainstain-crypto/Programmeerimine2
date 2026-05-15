@@ -37,9 +37,9 @@ namespace KooliProjekt.Application.Features.VisiteDocument
             }
 
             visitDocument.AppointmentId = request.AppointmentId;
-            visitDocument.FilePath = request.FilePath;
             visitDocument.FileType = request.FileType;
             visitDocument.UploadedBy = request.UploadedBy;
+            visitDocument.CreatedAt = request.CreatedAt;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

@@ -18,5 +18,9 @@ public class Availability
 
     public bool IsException { get; set; } = default!;
     [Required]
-    public Doctor Doctor { get; set; } 
+    public Doctor Doctor { get; set; }
+
+    [Required]
+    public System.DateTime DateValue { get; set; }
+
 }

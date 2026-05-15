@@ -13,7 +13,7 @@ public class AdminOverride
     [Required]
     [MaxLength(100)]
     public string Reason { get; set; }
-    public string? IsAdmin { get; set; }
+    public string IsAdmin { get; set; }
     public int CreatedBy { get; set; }
     [Required]
     public Doctor Doctor { get; set; } 

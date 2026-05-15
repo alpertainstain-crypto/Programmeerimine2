@@ -20,6 +20,7 @@ namespace KooliProjekt.Application.Dto
         public TimeSpan StartTime { get; set; }
         [Required]
         public TimeSpan EndTime { get; set; }
+        [Required]
         public Date Date { get; set; }
         public bool IsException { get; set; }
         [Required]

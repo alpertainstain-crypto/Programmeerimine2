@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KooliProjekt.Application.Data
 {
@@ -22,6 +23,13 @@ namespace KooliProjekt.Application.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<AdminOverride> AdminOverride { get; set; }
         public DbSet<VisitDocument> VisitDocuments { get; set; }
-        public DbSet<ToDoList> ToDoLists { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure Date as an owned entity
+            modelBuilder.Entity<Availability>()
+                .OwnsOne(a => a.Date);
+        }
     }
 }

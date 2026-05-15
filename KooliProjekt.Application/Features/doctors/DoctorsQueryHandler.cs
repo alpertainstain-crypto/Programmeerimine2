@@ -25,7 +25,7 @@ namespace KooliProjekt.Application.Features
 
             result.Value = await _dbContext
                 .Doctors 
-                .OrderBy(list => list.Name)
+                .OrderBy(list => list.DoctorId)
                 .GetPagedAsync(request.Page, request.PageSize);
 
             return result;

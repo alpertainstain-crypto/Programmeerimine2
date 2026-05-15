@@ -8,7 +8,7 @@ namespace KooliProjekt.Application.Features.Invoices
     public class SaveInvoiceCommand : IRequest<OperationResult>, ITransactional
     {
         public int Id { get; set; }
-        public string InvoiceNo { get; set; } = default!;
+        public int InvoiceNo { get; set; } = default!;
         public DateTime InvoiceDate { get; set; }
         public DateTime DueDate { get; set; }
         public string Status { get; set; } = default!;

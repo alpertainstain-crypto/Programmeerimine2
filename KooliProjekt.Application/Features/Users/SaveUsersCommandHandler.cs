@@ -35,11 +35,10 @@ namespace KooliProjekt.Application.Features.Users
                     return result;
                 }
             }
-
-            user.Name = request.Name;
+            user.FirstName = request.Name;
+            user.LastName = request.Name;
             user.Email = request.Email;
             user.Phone = request.Phone;
-            user.PasswordHash = request.PasswordHash;
             user.Role = request.Role;
 
             await _dbContext.SaveChangesAsync(cancellationToken);

@@ -21,18 +21,18 @@ namespace KooliProjekt.Application.Data
             // Generate Doctors (10+)
             var doctors = new List<Doctor>
             {
-                new Doctor { Name = "Dr. Jaan Tamm", Specialty = "Kardioloogia" },
-                new Doctor { Name = "Dr. Kaarina Saar", Specialty = "Pädiaatria" },
-                new Doctor { Name = "Dr. Martin Ots", Specialty = "Ortopeedika" },
-                new Doctor { Name = "Dr. Liisa Kask", Specialty = "Dermatoloogia" },
-                new Doctor { Name = "Dr. Rein Vaher", Specialty = "Oftalmoloogia" },
-                new Doctor { Name = "Dr. Erika Roosild", Specialty = "Psühhiaatria" },
-                new Doctor { Name = "Dr. Andres Koppel", Specialty = "Kirurgia" },
-                new Doctor { Name = "Dr. Kristel Sillari", Specialty = "Neuropatoloogia" },
-                new Doctor { Name = "Dr. Toomas Lepp", Specialty = "Gastroenteroloogia" },
-                new Doctor { Name = "Dr. Anne Sikk", Specialty = "Pulmonoloogia" },
-                new Doctor { Name = "Dr. Mihkel Ratassepp", Specialty = "Onkoloogia" },
-                new Doctor { Name = "Dr. Kaarina Pärna", Specialty = "Urioloogia" }
+                new Doctor { FirstName = "Dr. Jaan ", LastName = "Tamm", Specialty = "Kardioloogia" },
+                new Doctor { FirstName = "Dr. Kaarina ", LastName = "Saar", Specialty = "Pädiaatria" },
+                new Doctor { FirstName = "Dr. Martin ", LastName = "Ots", Specialty = "Ortopeedika" },
+                new Doctor { FirstName = "Dr. Liisa ", LastName = "Kask", Specialty = "Dermatoloogia" },
+                new Doctor { FirstName = "Dr. Rein ", LastName = "Vaher", Specialty = "Oftalmoloogia" },
+                new Doctor { FirstName = "Dr. Erika ", LastName = "Roosild", Specialty = "Psühhiaatria" },
+                new Doctor { FirstName = "Dr. Andres ", LastName = "Koppel", Specialty = "Kirurgia" },
+                new Doctor { FirstName = "Dr. Kristel ", LastName = "Sillari", Specialty = "Neuropatoloogia" },
+                new Doctor { FirstName = "Dr. Toomas ", LastName = "Lepp", Specialty = "Gastroenteroloogia" },
+                new Doctor { FirstName = "Dr. Anne ", LastName = "Sikk", Specialty = "Pulmonoloogia" },
+                new Doctor { FirstName = "Dr. Mihkel ", LastName = "Ratassepp", Specialty = "Onkoloogia" },
+                new Doctor { FirstName = "Dr. Kaarina ", LastName = "Pärna", Specialty = "Urioloogia" }
             };
             context.Doctors.AddRange(doctors);
             context.SaveChanges();
@@ -42,100 +42,100 @@ namespace KooliProjekt.Application.Data
             {
                 new User 
                 { 
-                    Name = "Peeter Sepp", 
+                    FirstName = "Peeter ",
+                    LastName = "Sepp",
                     Email = "peeter.sepp@email.com", 
-                    Phone = "+3725551234", 
-                    PasswordHash = "hash123", 
+                    Phone = "+3725551234",  
                     Role = "Patient",
                     CreatedAt = DateTime.Now.AddDays(-30)
                 },
                 new User 
                 { 
-                    Name = "Mari Järv", 
+                    FirstName = "Mari ",
+                    LastName = "Järv",
                     Email = "mari.jarv@email.com", 
-                    Phone = "+3725551235", 
-                    PasswordHash = "hash124", 
+                    Phone = "+3725551235",  
                     Role = "Patient",
                     CreatedAt = DateTime.Now.AddDays(-25)
                 },
                 new User 
                 { 
-                    Name = "Jüri Kask", 
+                    FirstName = "Jüri ",
+                    LastName = "Kask",
                     Email = "juri.kask@email.com", 
-                    Phone = "+3725551236", 
-                    PasswordHash = "hash125", 
+                    Phone = "+3725551236",  
                     Role = "Patient",
                     CreatedAt = DateTime.Now.AddDays(-20)
                 },
                 new User 
                 { 
-                    Name = "Krista Mänd", 
+                    FirstName = "Krista ",
+                    LastName = "Mand",
                     Email = "krista.mand@email.com", 
                     Phone = "+3725551237", 
-                    PasswordHash = "hash126", 
                     Role = "Patient",
                     CreatedAt = DateTime.Now.AddDays(-15)
                 },
                 new User 
                 { 
-                    Name = "Rein Lepp", 
+                    FirstName = "Rein",
+                    LastName = "Lepp", 
                     Email = "rein.lepp@email.com", 
                     Phone = "+3725551238", 
-                    PasswordHash = "hash127", 
                     Role = "Admin",
                     CreatedAt = DateTime.Now.AddDays(-10)
                 },
                 new User 
                 { 
-                    Name = "Liina Vaher", 
+                    FirstName = "Liina",
+                    LastName = "Vaher", 
                     Email = "liina.vaher@email.com", 
                     Phone = "+3725551239", 
-                    PasswordHash = "hash128", 
                     Role = "Patient",
                     CreatedAt = DateTime.Now.AddDays(-5)
                 },
                 new User 
                 { 
-                    Name = "Andres Sillari", 
+                    FirstName = "Andres",
+                    LastName = "Sillari", 
                     Email = "andres.sillari@email.com", 
                     Phone = "+3725551240", 
-                    PasswordHash = "hash129", 
                     Role = "Doctor",
                     CreatedAt = DateTime.Now.AddDays(-3)
                 },
                 new User 
                 { 
-                    Name = "Eve Rossi", 
+                    FirstName = "Eve",
+                    LastName = "Rossi", 
                     Email = "eve.rossi@email.com", 
                     Phone = "+3725551241", 
-                    PasswordHash = "hash130", 
                     Role = "Patient",
                     CreatedAt = DateTime.Now.AddDays(-1)
                 },
                 new User 
                 { 
-                    Name = "Toomas Kiik", 
+                    FirstName = "Toomas",
+                    LastName = "Kiik", 
                     Email = "toomas.kiik@email.com", 
                     Phone = "+3725551242", 
-                    PasswordHash = "hash131", 
                     Role = "Patient",
                     CreatedAt = DateTime.Now
                 },
                 new User 
                 { 
-                    Name = "Kadri Saar", 
+                    FirstName = "Kadri",
+                    LastName = "Saar", 
                     Email = "kadri.saar@email.com", 
                     Phone = "+3725551243", 
-                    PasswordHash = "hash132", 
                     Role = "Nurse",
                     CreatedAt = DateTime.Now
                 },
                 new User 
                 { 
-                    Name = "Mikk Oja", 
+                    FirstName = "Mikk",
+                    LastName = "Oja", 
                     Email = "mikk.oja@email.com", 
                     Phone = "+3725551244", 
-                    PasswordHash = "hash133", 
                     Role = "Patient",
                     CreatedAt = DateTime.Now
                 }
@@ -165,17 +165,17 @@ namespace KooliProjekt.Application.Data
             // Generate Appointments (10+)
             var appointments = new List<Appointment>
             {
-                new Appointment { Time = DateTime.Now.AddDays(1).Date.AddHours(9), UserId = users[0].Id, DoctorId = doctors[0].Id },
-                new Appointment { Time = DateTime.Now.AddDays(1).Date.AddHours(10), UserId = users[1].Id, DoctorId = doctors[1].Id },
-                new Appointment { Time = DateTime.Now.AddDays(2).Date.AddHours(11), UserId = users[2].Id, DoctorId = doctors[2].Id },
-                new Appointment { Time = DateTime.Now.AddDays(2).Date.AddHours(14), UserId = users[3].Id, DoctorId = doctors[3].Id },
-                new Appointment { Time = DateTime.Now.AddDays(3).Date.AddHours(9), UserId = users[4].Id, DoctorId = doctors[4].Id },
-                new Appointment { Time = DateTime.Now.AddDays(3).Date.AddHours(15), UserId = users[5].Id, DoctorId = doctors[5].Id },
-                new Appointment { Time = DateTime.Now.AddDays(4).Date.AddHours(10), UserId = users[6].Id, DoctorId = doctors[6].Id },
-                new Appointment { Time = DateTime.Now.AddDays(4).Date.AddHours(13), UserId = users[7].Id, DoctorId = doctors[7].Id },
-                new Appointment { Time = DateTime.Now.AddDays(5).Date.AddHours(9), UserId = users[8].Id, DoctorId = doctors[8].Id },
-                new Appointment { Time = DateTime.Now.AddDays(5).Date.AddHours(14), UserId = users[9].Id, DoctorId = doctors[9].Id },
-                new Appointment { Time = DateTime.Now.AddDays(6).Date.AddHours(11), UserId = users[10].Id, DoctorId = doctors[10].Id }
+                new Appointment { Time = DateTime.Now.AddDays(1).Date.AddHours(9), UserId = users[0].Id, DoctorId = doctors[0].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(1).Date.AddHours(10), UserId = users[1].Id, DoctorId = doctors[1].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(2).Date.AddHours(11), UserId = users[2].Id, DoctorId = doctors[2].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(2).Date.AddHours(14), UserId = users[3].Id, DoctorId = doctors[3].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(3).Date.AddHours(9), UserId = users[4].Id, DoctorId = doctors[4].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(3).Date.AddHours(15), UserId = users[5].Id, DoctorId = doctors[5].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(4).Date.AddHours(10), UserId = users[6].Id, DoctorId = doctors[6].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(4).Date.AddHours(13), UserId = users[7].Id, DoctorId = doctors[7].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(5).Date.AddHours(9), UserId = users[8].Id, DoctorId = doctors[8].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(5).Date.AddHours(14), UserId = users[9].Id, DoctorId = doctors[9].DoctorId },
+                new Appointment { Time = DateTime.Now.AddDays(6).Date.AddHours(11), UserId = users[10].Id, DoctorId = doctors[10].DoctorId }
             };
             context.Appointments.AddRange(appointments);
             context.SaveChanges();
@@ -183,17 +183,17 @@ namespace KooliProjekt.Application.Data
             // Generate Availability (10+)
             var availability = new List<Availability>
             {
-                new Availability { DoctorId = doctors[0].Id, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), Date = DateTime.Now.AddDays(1), IsException = false },
-                new Availability { DoctorId = doctors[0].Id, DayOfWeek = 2, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), Date = DateTime.Now.AddDays(2), IsException = false },
-                new Availability { DoctorId = doctors[1].Id, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), Date = DateTime.Now.AddDays(1), IsException = false },
-                new Availability { DoctorId = doctors[1].Id, DayOfWeek = 3, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), Date = DateTime.Now.AddDays(3), IsException = false },
-                new Availability { DoctorId = doctors[2].Id, DayOfWeek = 2, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), Date = DateTime.Now.AddDays(2), IsException = false },
-                new Availability { DoctorId = doctors[2].Id, DayOfWeek = 4, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), Date = DateTime.Now.AddDays(4), IsException = false },
-                new Availability { DoctorId = doctors[3].Id, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), Date = DateTime.Now.AddDays(1), IsException = false },
-                new Availability { DoctorId = doctors[4].Id, DayOfWeek = 3, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), Date = DateTime.Now.AddDays(3), IsException = false },
-                new Availability { DoctorId = doctors[5].Id, DayOfWeek = 2, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), Date = DateTime.Now.AddDays(2), IsException = false },
-                new Availability { DoctorId = doctors[6].Id, DayOfWeek = 4, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), Date = DateTime.Now.AddDays(4), IsException = false },
-                new Availability { DoctorId = doctors[7].Id, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), Date = DateTime.Now.AddDays(1), IsException = false }
+                new Availability { DoctorId = doctors[0].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[0].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[1].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[1].DoctorId, DayOfWeek = 3, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[2].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[2].DoctorId, DayOfWeek = 4, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[3].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[4].DoctorId, DayOfWeek = 3, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[5].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[6].DoctorId, DayOfWeek = 4, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
+                new Availability { DoctorId = doctors[7].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false }
             };
             context.Availability.AddRange(availability);
             context.SaveChanges();
@@ -203,7 +203,7 @@ namespace KooliProjekt.Application.Data
             {
                 new Invoice 
                 { 
-                    InvoiceNo = "INV001", 
+                    InvoiceNo = 1, 
                     InvoiceDate = DateTime.Now.AddDays(-20), 
                     DueDate = DateTime.Now.AddDays(10), 
                     Status = "Issued",
@@ -214,7 +214,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV002", 
+                    InvoiceNo = 2, 
                     InvoiceDate = DateTime.Now.AddDays(-15), 
                     DueDate = DateTime.Now.AddDays(15), 
                     Status = "Issued",
@@ -225,7 +225,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV003", 
+                    InvoiceNo = 3, 
                     InvoiceDate = DateTime.Now.AddDays(-10), 
                     DueDate = DateTime.Now.AddDays(20), 
                     Status = "Paid",
@@ -237,7 +237,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV004", 
+                    InvoiceNo = 4, 
                     InvoiceDate = DateTime.Now.AddDays(-5), 
                     DueDate = DateTime.Now.AddDays(25), 
                     Status = "Issued",
@@ -248,7 +248,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV005", 
+                    InvoiceNo = 5, 
                     InvoiceDate = DateTime.Now.AddDays(-3), 
                     DueDate = DateTime.Now.AddDays(27), 
                     Status = "Issued",
@@ -259,7 +259,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV006", 
+                    InvoiceNo = 6, 
                     InvoiceDate = DateTime.Now.AddDays(-2), 
                     DueDate = DateTime.Now.AddDays(28), 
                     Status = "Overdue",
@@ -270,7 +270,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV007", 
+                    InvoiceNo = 7, 
                     InvoiceDate = DateTime.Now.AddDays(-1), 
                     DueDate = DateTime.Now.AddDays(29), 
                     Status = "Issued",
@@ -281,7 +281,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV008", 
+                    InvoiceNo = 8, 
                     InvoiceDate = DateTime.Now, 
                     DueDate = DateTime.Now.AddDays(30), 
                     Status = "Issued",
@@ -292,7 +292,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV009", 
+                    InvoiceNo = 9, 
                     InvoiceDate = DateTime.Now, 
                     DueDate = DateTime.Now.AddDays(30), 
                     Status = "Draft",
@@ -303,7 +303,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new Invoice 
                 { 
-                    InvoiceNo = "INV010", 
+                    InvoiceNo = 10, 
                     InvoiceDate = DateTime.Now, 
                     DueDate = DateTime.Now.AddDays(30), 
                     Status = "Issued",
@@ -358,7 +358,7 @@ namespace KooliProjekt.Application.Data
             {
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[0].Id, 
+                    DoctorId = doctors[0].DoctorId, 
                     Start = DateTime.Now.AddDays(1).Date.AddHours(12), 
                     End = DateTime.Now.AddDays(1).Date.AddHours(14), 
                     Reason = "Kohtumine",
@@ -366,7 +366,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[1].Id, 
+                    DoctorId = doctors[1].DoctorId, 
                     Start = DateTime.Now.AddDays(2).Date.AddHours(13), 
                     End = DateTime.Now.AddDays(2).Date.AddHours(15), 
                     Reason = "Koolitamine",
@@ -374,7 +374,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[2].Id, 
+                    DoctorId = doctors[2].DoctorId, 
                     Start = DateTime.Now.AddDays(3).Date.AddHours(11), 
                     End = DateTime.Now.AddDays(3).Date.AddHours(12), 
                     Reason = "Haiguspäev",
@@ -382,7 +382,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[3].Id, 
+                    DoctorId = doctors[3].DoctorId, 
                     Start = DateTime.Now.AddDays(4).Date.AddHours(9), 
                     End = DateTime.Now.AddDays(4).Date.AddHours(17), 
                     Reason = "Puhkus",
@@ -390,7 +390,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[4].Id, 
+                    DoctorId = doctors[4].DoctorId, 
                     Start = DateTime.Now.AddDays(5).Date.AddHours(12), 
                     End = DateTime.Now.AddDays(5).Date.AddHours(13), 
                     Reason = "Lunch",
@@ -398,7 +398,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[5].Id, 
+                    DoctorId = doctors[5].DoctorId, 
                     Start = DateTime.Now.AddDays(6).Date.AddHours(14), 
                     End = DateTime.Now.AddDays(6).Date.AddHours(16), 
                     Reason = "Operatsiooniruumi ettevalmistus",
@@ -406,7 +406,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[6].Id, 
+                    DoctorId = doctors[6].DoctorId, 
                     Start = DateTime.Now.AddDays(7).Date.AddHours(10), 
                     End = DateTime.Now.AddDays(7).Date.AddHours(11), 
                     Reason = "Administratiivne töö",
@@ -414,7 +414,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[7].Id, 
+                    DoctorId = doctors[7].DoctorId, 
                     Start = DateTime.Now.AddDays(8).Date.AddHours(9), 
                     End = DateTime.Now.AddDays(8).Date.AddHours(17), 
                     Reason = "Konverents",
@@ -422,7 +422,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[8].Id, 
+                    DoctorId = doctors[8].DoctorId, 
                     Start = DateTime.Now.AddDays(9).Date.AddHours(13), 
                     End = DateTime.Now.AddDays(9).Date.AddHours(14), 
                     Reason = "Väike vahe",
@@ -430,7 +430,7 @@ namespace KooliProjekt.Application.Data
                 },
                 new AdminOverride 
                 { 
-                    DoctorId = doctors[9].Id, 
+                    DoctorId = doctors[9].DoctorId, 
                     Start = DateTime.Now.AddDays(10).Date.AddHours(9), 
                     End = DateTime.Now.AddDays(10).Date.AddHours(17), 
                     Reason = "Sünnipäev",
@@ -443,17 +443,17 @@ namespace KooliProjekt.Application.Data
             // Generate VisitDocuments (10+)
             var visitDocuments = new List<VisitDocument>
             {
-                new VisitDocument { AppointmentId = appointments[0].Id, FilePath = "/docs/visit_001.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-15) },
-                new VisitDocument { AppointmentId = appointments[1].Id, FilePath = "/docs/visit_002.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-14) },
-                new VisitDocument { AppointmentId = appointments[2].Id, FilePath = "/docs/visit_003.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-13) },
-                new VisitDocument { AppointmentId = appointments[3].Id, FilePath = "/docs/xray_001.jpg", FileType = "JPG", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-12) },
-                new VisitDocument { AppointmentId = appointments[4].Id, FilePath = "/docs/visit_004.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-11) },
-                new VisitDocument { AppointmentId = appointments[5].Id, FilePath = "/docs/lab_results.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-10) },
-                new VisitDocument { AppointmentId = appointments[6].Id, FilePath = "/docs/ultrasound.jpg", FileType = "JPG", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-9) },
-                new VisitDocument { AppointmentId = appointments[7].Id, FilePath = "/docs/visit_005.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-8) },
-                new VisitDocument { AppointmentId = appointments[8].Id, FilePath = "/docs/visit_006.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-7) },
-                new VisitDocument { AppointmentId = appointments[9].Id, FilePath = "/docs/visit_007.pdf", FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-6) },
-                new VisitDocument { AppointmentId = appointments[10].Id, FilePath = "/docs/xray_002.jpg", FileType = "JPG", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-5) }
+                new VisitDocument { AppointmentId = appointments[0].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-15) },
+                new VisitDocument { AppointmentId = appointments[1].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-14) },
+                new VisitDocument { AppointmentId = appointments[2].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-13) },
+                new VisitDocument { AppointmentId = appointments[3].Id, FileType = "JPG", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-12) },
+                new VisitDocument { AppointmentId = appointments[4].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-11) },
+                new VisitDocument { AppointmentId = appointments[5].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-10) },
+                new VisitDocument { AppointmentId = appointments[6].Id, FileType = "JPG", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-9) },
+                new VisitDocument { AppointmentId = appointments[7].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-8) },
+                new VisitDocument { AppointmentId = appointments[8].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-7) },
+                new VisitDocument { AppointmentId = appointments[9].Id, FileType = "PDF", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-6) },
+                new VisitDocument { AppointmentId = appointments[10].Id, FileType = "JPG", UploadedBy = users[4].Id, CreatedAt = DateTime.Now.AddDays(-5) }
             };
             context.VisitDocuments.AddRange(visitDocuments);
             context.SaveChanges();

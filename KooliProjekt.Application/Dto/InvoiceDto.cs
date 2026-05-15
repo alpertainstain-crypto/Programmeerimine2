@@ -9,7 +9,7 @@ namespace KooliProjekt.Application.Dto
     internal class InvoiceDto
     {
         public int id { get; set; }
-        public int InvoiceNumber { get; set; }
+        public int InvoiceNo { get; set; }
         public DateTime InvoiceDate { get; set; }
         public DateTime DueDate { get; set; }
         public string Status { get; set; }

@@ -40,7 +40,7 @@ namespace KooliProjekt.Application.Features
                 }
             }
 
-            doctor.Name = request.title;
+            doctor.LastName = request.title;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 
