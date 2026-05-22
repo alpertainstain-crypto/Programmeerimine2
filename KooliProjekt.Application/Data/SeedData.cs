@@ -183,17 +183,17 @@ namespace KooliProjekt.Application.Data
             // Generate Availability (10+)
             var availability = new List<Availability>
             {
-                new Availability { DoctorId = doctors[0].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[0].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[1].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[1].DoctorId, DayOfWeek = 3, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[2].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[2].DoctorId, DayOfWeek = 4, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[3].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[4].DoctorId, DayOfWeek = 3, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[5].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[6].DoctorId, DayOfWeek = 4, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false },
-                new Availability { DoctorId = doctors[7].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false }
+                new Availability { DoctorId = doctors[0].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false, Date = new Date(DateTime.Now), DateValue = DateTime.Now },
+                new Availability { DoctorId = doctors[0].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(1)), DateValue = DateTime.Now.AddDays(1) },
+                new Availability { DoctorId = doctors[1].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false, Date = new Date(DateTime.Now), DateValue = DateTime.Now },
+                new Availability { DoctorId = doctors[1].DoctorId, DayOfWeek = 3, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(2)), DateValue = DateTime.Now.AddDays(2) },
+                new Availability { DoctorId = doctors[2].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(1)), DateValue = DateTime.Now.AddDays(1) },
+                new Availability { DoctorId = doctors[2].DoctorId, DayOfWeek = 4, StartTime = new TimeSpan(8, 0, 0), EndTime = new TimeSpan(16, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(3)), DateValue = DateTime.Now.AddDays(3) },
+                new Availability { DoctorId = doctors[3].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false, Date = new Date(DateTime.Now), DateValue = DateTime.Now },
+                new Availability { DoctorId = doctors[4].DoctorId, DayOfWeek = 3, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(2)), DateValue = DateTime.Now.AddDays(2) },
+                new Availability { DoctorId = doctors[5].DoctorId, DayOfWeek = 2, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(1)), DateValue = DateTime.Now.AddDays(1) },
+                new Availability { DoctorId = doctors[6].DoctorId, DayOfWeek = 4, StartTime = new TimeSpan(9, 0, 0), EndTime = new TimeSpan(17, 0, 0), IsException = false, Date = new Date(DateTime.Now.AddDays(3)), DateValue = DateTime.Now.AddDays(3) },
+                new Availability { DoctorId = doctors[7].DoctorId, DayOfWeek = 1, StartTime = new TimeSpan(10, 0, 0), EndTime = new TimeSpan(18, 0, 0), IsException = false, Date = new Date(DateTime.Now), DateValue = DateTime.Now }
             };
             context.Availability.AddRange(availability);
             context.SaveChanges();

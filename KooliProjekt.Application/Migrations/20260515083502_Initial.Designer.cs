@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KooliProjekt.Application.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251205080323_Initial")]
+    [Migration("20260515083502_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace KooliProjekt.Application.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.AdminOverride", b =>
+            modelBuilder.Entity("AdminOverride", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,8 +42,13 @@ namespace KooliProjekt.Application.Migrations
                     b.Property<DateTime>("End")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Reason")
+                    b.Property<string>("IsAdmin")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("Start")
                         .HasColumnType("datetime2");
@@ -55,7 +60,7 @@ namespace KooliProjekt.Application.Migrations
                     b.ToTable("AdminOverride");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Appointment", b =>
+            modelBuilder.Entity("Appointment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,10 +83,10 @@ namespace KooliProjekt.Application.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointment");
+                    b.ToTable("Appointments");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Availability", b =>
+            modelBuilder.Entity("Availability", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,23 +94,20 @@ namespace KooliProjekt.Application.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateValue")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("DayOfWeek")
                         .HasColumnType("int");
 
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
 
                     b.Property<bool>("IsException")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
@@ -117,26 +119,35 @@ namespace KooliProjekt.Application.Migrations
                     b.ToTable("Availability");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Doctor", b =>
+            modelBuilder.Entity("Doctor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DoctorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoctorId"));
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Specialty")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("DoctorId");
 
-                    b.ToTable("doctors");
+                    b.ToTable("Doctors");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Invoice", b =>
+            modelBuilder.Entity("Invoice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,14 +170,17 @@ namespace KooliProjekt.Application.Migrations
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("InvoiceNo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("InvoiceNo")
+                        .HasMaxLength(120)
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("MarkedPaidAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("Subtotal")
                         .HasColumnType("decimal(18,2)");
@@ -178,7 +192,7 @@ namespace KooliProjekt.Application.Migrations
                     b.ToTable("Invoice");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.InvoiceLine", b =>
+            modelBuilder.Entity("InvoiceLine", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -190,7 +204,9 @@ namespace KooliProjekt.Application.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<int>("InvoiceId")
                         .HasColumnType("int");
@@ -199,10 +215,10 @@ namespace KooliProjekt.Application.Migrations
 
                     b.HasIndex("InvoiceId");
 
-                    b.ToTable("InvoiceLine");
+                    b.ToTable("InvoiceLines");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Service", b =>
+            modelBuilder.Entity("Service", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -211,10 +227,14 @@ namespace KooliProjekt.Application.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
@@ -224,7 +244,7 @@ namespace KooliProjekt.Application.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.User", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -236,26 +256,36 @@ namespace KooliProjekt.Application.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.VisitDocument", b =>
+            modelBuilder.Entity("VisitDocument", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -269,11 +299,10 @@ namespace KooliProjekt.Application.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FilePath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FileType")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("UploadedBy")
                         .HasColumnType("int");
@@ -282,12 +311,12 @@ namespace KooliProjekt.Application.Migrations
 
                     b.HasIndex("AppointmentId");
 
-                    b.ToTable("VisitDocument");
+                    b.ToTable("VisitDocuments");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.AdminOverride", b =>
+            modelBuilder.Entity("AdminOverride", b =>
                 {
-                    b.HasOne("KooliProjekt.Application.Data.Doctor", "Doctor")
+                    b.HasOne("Doctor", "Doctor")
                         .WithMany()
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -296,15 +325,15 @@ namespace KooliProjekt.Application.Migrations
                     b.Navigation("Doctor");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Appointment", b =>
+            modelBuilder.Entity("Appointment", b =>
                 {
-                    b.HasOne("KooliProjekt.Application.Data.Doctor", "Doctor")
-                        .WithMany("Appointments")
+                    b.HasOne("Doctor", "Doctor")
+                        .WithMany()
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KooliProjekt.Application.Data.User", "User")
+                    b.HasOne("User", "User")
                         .WithMany("Appointments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -315,20 +344,39 @@ namespace KooliProjekt.Application.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Availability", b =>
+            modelBuilder.Entity("Availability", b =>
                 {
-                    b.HasOne("KooliProjekt.Application.Data.Doctor", "Doctor")
-                        .WithMany()
+                    b.HasOne("Doctor", "Doctor")
+                        .WithMany("Availabilities")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("Date", "Date", b1 =>
+                        {
+                            b1.Property<int>("AvailabilityId")
+                                .HasColumnType("int");
+
+                            b1.Property<DateTime>("DateValue")
+                                .HasColumnType("datetime2");
+
+                            b1.HasKey("AvailabilityId");
+
+                            b1.ToTable("Availability");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AvailabilityId");
+                        });
+
+                    b.Navigation("Date")
                         .IsRequired();
 
                     b.Navigation("Doctor");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Invoice", b =>
+            modelBuilder.Entity("Invoice", b =>
                 {
-                    b.HasOne("KooliProjekt.Application.Data.Appointment", "Appointment")
+                    b.HasOne("Appointment", "Appointment")
                         .WithMany()
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -337,9 +385,9 @@ namespace KooliProjekt.Application.Migrations
                     b.Navigation("Appointment");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.InvoiceLine", b =>
+            modelBuilder.Entity("InvoiceLine", b =>
                 {
-                    b.HasOne("KooliProjekt.Application.Data.Invoice", "Invoice")
+                    b.HasOne("Invoice", "Invoice")
                         .WithMany("Lines")
                         .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -348,9 +396,9 @@ namespace KooliProjekt.Application.Migrations
                     b.Navigation("Invoice");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.VisitDocument", b =>
+            modelBuilder.Entity("VisitDocument", b =>
                 {
-                    b.HasOne("KooliProjekt.Application.Data.Appointment", "Appointment")
+                    b.HasOne("Appointment", "Appointment")
                         .WithMany()
                         .HasForeignKey("AppointmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -359,17 +407,17 @@ namespace KooliProjekt.Application.Migrations
                     b.Navigation("Appointment");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Doctor", b =>
+            modelBuilder.Entity("Doctor", b =>
                 {
-                    b.Navigation("Appointments");
+                    b.Navigation("Availabilities");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.Invoice", b =>
+            modelBuilder.Entity("Invoice", b =>
                 {
                     b.Navigation("Lines");
                 });
 
-            modelBuilder.Entity("KooliProjekt.Application.Data.User", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Navigation("Appointments");
                 });
