@@ -405,6 +405,7 @@ namespace KooliProjekt.Application.Data
                     CreatedBy = users[4].Id
                 },
                 new AdminOverride 
+
                 { 
                     DoctorId = doctors[6].DoctorId, 
                     Start = DateTime.Now.AddDays(7).Date.AddHours(10), 
