@@ -22,12 +22,34 @@ namespace KooliProjekt.Application.Features
         {
             var result = new OperationResult<PagedResult<Appointment>>();
 
-            result.Value = await _dbContext
-                .Appointments
+            var query = _dbContext.Appointments.AsQueryable();
+
+            // Apply search filters
+            if (request.SearchFromDate.HasValue)
+            {
+                query = query.Where(x => x.Time >= request.SearchFromDate.Value);
+            }
+
+            if (request.SearchToDate.HasValue)
+            {
+                query = query.Where(x => x.Time <= request.SearchToDate.Value);
+            }
+
+            if (request.SearchDoctorId.HasValue && request.SearchDoctorId > 0)
+            {
+                query = query.Where(x => x.DoctorId == request.SearchDoctorId.Value);
+            }
+
+            if (request.SearchUserId.HasValue && request.SearchUserId > 0)
+            {
+                query = query.Where(x => x.UserId == request.SearchUserId.Value);
+            }
+
+            result.Value = await query
                 .OrderBy(x => x.Id)
                 .GetPagedAsync(request.Page, request.PageSize);
 
             return result;
-        } 
+        }
     }
 }

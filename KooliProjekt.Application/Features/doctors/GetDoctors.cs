@@ -9,5 +9,8 @@ namespace KooliProjekt.Application.Features
     {
         public int Page { get; set; }
         public int PageSize { get; set; }
+        public string? SearchFirstName { get; set; }
+        public string? SearchLastName { get; set; }
+        public string? SearchSpecialty { get; set; }
     }
 }

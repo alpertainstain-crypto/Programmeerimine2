@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>opencover</Format>
+          <Exclude>
+            <!-- Exclude Behaviors folder -->
+            <ExcludeByAttribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</ExcludeByAttribute>
+
+            <!-- Exclude Entity/Data classes -->
+            [KooliProjekt.Application]KooliProjekt.Application.Data.*
+
+            <!-- Exclude DTOs -->
+            [KooliProjekt.Application]KooliProjekt.Application.Dto.*
+
+            <!-- Exclude Infrastructure (Paging, Results) -->
+            [KooliProjekt.Application]KooliProjekt.Application.Infrastructure.*
+
+            <!-- Exclude Migrations -->
+            [KooliProjekt.Application]KooliProjekt.Application.Migrations.*
+
+            <!-- Exclude Behaviors -->
+            [KooliProjekt.Application]KooliProjekt.Application.Behaviors.*
+
+            <!-- Exclude Commands (but NOT handlers) -->
+            [KooliProjekt.Application]KooliProjekt.Application.Features.*Command
+            [KooliProjekt.Application]KooliProjekt.Application.Features.*Query
+
+            <!-- Exclude Query classes (but NOT handlers) - anything ending with Query or Queries -->
+            [KooliProjekt.Application]KooliProjekt.Application.Features.*Queries
+            [KooliProjekt.Application]KooliProjekt.Application.Features.*.Get*[!Handler]
+          </Exclude>
+          <UseSourceLink>true</UseSourceLink>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

@@ -9,5 +9,7 @@ namespace KooliProjekt.Application.Features.InvoiceLines
     {
         public int Page { get; set; }
         public int PageSize { get; set; }
+        public string? SearchDescription { get; set; }
+        public int? SearchInvoiceId { get; set; }
     }
 }

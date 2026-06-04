@@ -21,8 +21,30 @@ namespace KooliProjekt.Application.Features
         {
             var result = new OperationResult<PagedResult<User>>();
 
-            result.Value = await _dbContext
-                .Users
+            var query = _dbContext.Users.AsQueryable();
+
+            // Apply search filters
+            if (!string.IsNullOrWhiteSpace(request.SearchFirstName))
+            {
+                query = query.Where(x => x.FirstName.Contains(request.SearchFirstName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.SearchLastName))
+            {
+                query = query.Where(x => x.LastName.Contains(request.SearchLastName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.SearchEmail))
+            {
+                query = query.Where(x => x.Email.Contains(request.SearchEmail));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.SearchRole))
+            {
+                query = query.Where(x => x.Role == request.SearchRole);
+            }
+
+            result.Value = await query
                 .OrderBy(x => x.LastName)
                 .GetPagedAsync(request.Page, request.PageSize);
 

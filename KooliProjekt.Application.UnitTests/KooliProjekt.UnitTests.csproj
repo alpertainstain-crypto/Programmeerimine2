@@ -36,10 +36,4 @@
     <ProjectReference Include="..\KooliProjekt.Application\KooliProjekt.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\AdminOverride\" />
-    <Folder Include="Features\Appointments\" />
-    <Folder Include="Features\Availability\" />
-  </ItemGroup>
-
 </Project>

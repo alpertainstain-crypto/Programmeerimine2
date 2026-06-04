@@ -21,8 +21,20 @@ namespace KooliProjekt.Application.Features
         {
             var result = new OperationResult<PagedResult<Service>>();
 
-            result.Value = await _dbContext
-                .Services
+            var query = _dbContext.Services.AsQueryable();
+
+            // Apply search filters
+            if (!string.IsNullOrWhiteSpace(request.SearchCode))
+            {
+                query = query.Where(x => x.Code.Contains(request.SearchCode));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.SearchDescription))
+            {
+                query = query.Where(x => x.Description.Contains(request.SearchDescription));
+            }
+
+            result.Value = await query
                 .OrderBy(x => x.Code)
                 .GetPagedAsync(request.Page, request.PageSize);
 

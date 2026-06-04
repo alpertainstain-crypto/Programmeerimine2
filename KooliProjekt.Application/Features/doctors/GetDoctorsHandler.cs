@@ -22,8 +22,25 @@ namespace KooliProjekt.Application.Features
         {
             var result = new OperationResult<PagedResult<Doctor>>();
 
-            result.Value = await _dbContext
-                .Doctors
+            var query = _dbContext.Doctors.AsQueryable();
+
+            // Apply search filters
+            if (!string.IsNullOrWhiteSpace(request.SearchFirstName))
+            {
+                query = query.Where(x => x.FirstName.Contains(request.SearchFirstName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.SearchLastName))
+            {
+                query = query.Where(x => x.LastName.Contains(request.SearchLastName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.SearchSpecialty))
+            {
+                query = query.Where(x => x.Specialty.Contains(request.SearchSpecialty));
+            }
+
+            result.Value = await query
                 .OrderBy(x => x.DoctorId)
                 .GetPagedAsync(request.Page, request.PageSize);
 

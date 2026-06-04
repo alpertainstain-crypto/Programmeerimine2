@@ -23,8 +23,25 @@ namespace KooliProjekt.Application.Features
         {
             var result = new OperationResult<PagedResult<Invoice>>();
 
-            result.Value = await _dbContext
-                .Invoice
+            var query = _dbContext.Invoice.AsQueryable();
+
+            // Apply search filters
+            if (!string.IsNullOrWhiteSpace(request.SearchStatus))
+            {
+                query = query.Where(x => x.Status == request.SearchStatus);
+            }
+
+            if (request.SearchFromDate.HasValue)
+            {
+                query = query.Where(x => x.InvoiceDate >= request.SearchFromDate.Value);
+            }
+
+            if (request.SearchToDate.HasValue)
+            {
+                query = query.Where(x => x.InvoiceDate <= request.SearchToDate.Value);
+            }
+
+            result.Value = await query
                 .OrderBy(list => list.InvoiceDate)
                 .GetPagedAsync(request.Page, request.PageSize);
 
